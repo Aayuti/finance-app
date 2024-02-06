@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-// import 'home_page.dart';
 import 'package:provider/provider.dart';
 import 'dart:io';
 import 'package:flutter/services.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:finance_app/styles/app_style.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);
@@ -15,7 +15,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   // late HomePageModel _model;
   bool isiOS = Platform.isIOS;
-  final babyPink = const Color(0xFFF1CBEF);
+  // final babyPink = componentColor;
   final black = const Color(0xFF181818);
   final white = const Color(0xFFF1F5F7);
   final scaffoldKey = GlobalKey<ScaffoldState>();
@@ -123,7 +123,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     },
                     style: ElevatedButton.styleFrom(
                       fixedSize: const Size(350, 50),
-                      backgroundColor: babyPink,
+                      backgroundColor: AppStyle.componentColor,
                       // textStyle: const TextStyle(
                       //   fontFamily: 'Ubuntu',
                       //   color: Colors.black,
