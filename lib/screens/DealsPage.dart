@@ -234,8 +234,8 @@ class _OffersWidgetState extends State<OffersWidget> {
                             mainAxisSize: MainAxisSize.max,
                             children: [
                               Padding(
-                                padding:
-                                    const EdgeInsetsDirectional.fromSTEB(4, 1, 1, 2),
+                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                    4, 1, 1, 2),
                                 child: ClipRRect(
                                   borderRadius: const BorderRadius.only(
                                     bottomLeft: Radius.circular(30),
@@ -262,17 +262,11 @@ class _OffersWidgetState extends State<OffersWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        FFLocalizations.of(context).getText(
-                                          'lvdqk9hx' /* Spotify */,
+                                        'Spotify',
+                                        style: TextStyle(
+                                          fontFamily: 'Lexend',
+                                          color: Theme.of(context).hoverColor,
                                         ),
-                                        style: FlutterFlowTheme.of(context)
-                                            .headlineSmall
-                                            .override(
-                                              fontFamily: 'Lexend',
-                                              color:
-                                                  FlutterFlowTheme.of(context)
-                                                      .secondaryBackground,
-                                            ),
                                       ),
                                       Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
@@ -842,8 +836,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                                               .override(
                                                 fontFamily: 'Poppins',
                                                 color:
-                                                    Theme.of(context)
-                                                        .alternate,
+                                                    Theme.of(context).alternate,
                                               ),
                                         ),
                                       ),
