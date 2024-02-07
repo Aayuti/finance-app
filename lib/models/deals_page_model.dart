@@ -23,4 +23,17 @@ class OffersModel {
   /// Action blocks are added here.
 
   /// Additional helper methods are added here.
+  // static Map<String, Map<String, String>> localizedValues = {
+  //   'en': {
+  //     'offers_and_deals': 'OFFERS & DEALS FOR YOU',
+  //     'find_exclusive_offers': 'Find new exclusive offers',
+  //   },
+  //   // Add translations for other languages as needed
+  // };
+
+  // static String of(BuildContext context, String key) {
+  //   return localizedValues[Localizations.localeOf(context).languageCode]![
+  //           key] ??
+  //       key; // Return the key if the translation is not found
+  // }
 }
