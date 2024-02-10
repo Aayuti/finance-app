@@ -30,3 +30,22 @@ class LearnMoreModel {
 
   /// Additional helper methods are added here.
 }
+
+/* class MyAlign extends StatelessWidget {
+  final AlignmentGeometry alignment;
+  final Widget child;
+
+  const MyAlign({
+    Key? key,
+    this.alignment = AlignmentDirectional.topStart,
+    this.child = const SizedBox(),
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MyAlign(
+      alignment: alignment,
+      child: child,
+    );
+  }
+} */

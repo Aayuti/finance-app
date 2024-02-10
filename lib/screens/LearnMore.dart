@@ -301,12 +301,16 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
           automaticallyImplyLeading: false,
           title: const Align(
             alignment: AlignmentDirectional(0, 0),
-            child: Text(
-              'Learn More',
-              style: TextStyle(
-                fontFamily: 'Poppins',
-                fontSize: 32,
-                fontWeight: FontWeight.w300,
+            child: Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(5, 20, 5, 10),
+              child: Text(
+                'Learn More',
+                style: TextStyle(
+                  fontFamily: 'Comfortaa',
+                  fontSize: 32,
+                  fontWeight: FontWeight.w300,
+                  color: Color(0xFFF1BCEF),
+                ),
               ),
             ),
           ),
@@ -344,123 +348,138 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0, 16, 10, 0),
-                            child: Container(
-                              width: 120,
-                              height: 110,
-                              constraints: const BoxConstraints(
-                                maxWidth: 500,
-                              ),
-                              decoration: BoxDecoration(
-                                color: Color(0xFFF1CBEF),
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(
+                            child: GestureDetector(
+                              onTap: () => print('Card 1 was clicked'),
+                              child: Container(
+                                width: 120,
+                                height: 110,
+                                constraints: const BoxConstraints(
+                                  maxWidth: 500,
+                                ),
+                                decoration: BoxDecoration(
                                   color: Color(0xFFF1CBEF),
-                                  width: 2,
+                                  borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(
+                                    color: Color(0xFFF1CBEF),
+                                    width: 2,
+                                  ),
                                 ),
-                              ),
-                              child: const Align(
-                                alignment: AlignmentDirectional(0, 0),
-                                child: Text(
-                                  'Expenses',
-                                  style: TextStyle(
-                                    fontFamily: 'Lexend',
-                                    color: Color(0xFF181818),
-                                    fontWeight: FontWeight.w500,
+                                child: const Align(
+                                  alignment: AlignmentDirectional(0, 0),
+                                  child: Text(
+                                    'Expenses',
+                                    style: TextStyle(
+                                      fontFamily: 'Lexend',
+                                      color: Color(0xFF181818),
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
                           ),
+                          // ),
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0, 16, 10, 0),
-                            child: Container(
-                              width: 120,
-                              height: 110,
-                              constraints: const BoxConstraints(
-                                maxWidth: 500,
-                              ),
-                              decoration: BoxDecoration(
-                                color: AppStyle.componentColor,
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(
-                                  color: AppStyle.componentColor,
-                                  width: 2,
+                            child: GestureDetector(
+                              onTap: () {
+                                print('Card 2 was clicked');
+                              },
+                              child: Container(
+                                width: 120,
+                                height: 110,
+                                constraints: const BoxConstraints(
+                                  maxWidth: 500,
                                 ),
-                              ),
-                              child: const Align(
-                                alignment: AlignmentDirectional(0, 0),
-                                child: Text(
-                                  'Expenses',
-                                  style: TextStyle(
-                                    fontFamily: 'Lexend',
-                                    color: Color(0xFF181818),
-                                    fontWeight: FontWeight.w500,
+                                decoration: BoxDecoration(
+                                  color: AppStyle.componentColor,
+                                  borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(
+                                    color: AppStyle.componentColor,
+                                    width: 2,
+                                  ),
+                                ),
+                                child: const Align(
+                                  alignment: AlignmentDirectional(0, 0),
+                                  child: Text(
+                                    'Expenses',
+                                    style: TextStyle(
+                                      fontFamily: 'Lexend',
+                                      color: Color(0xFF181818),
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0, 16, 10, 0),
-                            child: Container(
-                              width: 120,
-                              height: 110,
-                              constraints: const BoxConstraints(
-                                maxWidth: 500,
-                              ),
-                              decoration: BoxDecoration(
-                                color: AppStyle.componentColor,
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(
-                                  color: AppStyle.componentColor,
-                                  width: 2,
+                          GestureDetector(
+                            onTap: () => print('Card 3 was clicked'),
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0, 16, 10, 0),
+                              child: Container(
+                                width: 120,
+                                height: 110,
+                                constraints: const BoxConstraints(
+                                  maxWidth: 500,
                                 ),
-                              ),
-                              child: const Align(
-                                alignment: AlignmentDirectional(0, 0),
-                                child: Text(
-                                  'Expenses',
-                                  style: TextStyle(
-                                    fontFamily: 'Lexend',
-                                    color: Color(0xFF181818),
-                                    fontWeight: FontWeight.w500,
+                                decoration: BoxDecoration(
+                                  color: AppStyle.componentColor,
+                                  borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(
+                                    color: AppStyle.componentColor,
+                                    width: 2,
+                                  ),
+                                ),
+                                child: const Align(
+                                  alignment: AlignmentDirectional(0, 0),
+                                  child: Text(
+                                    'Expenses',
+                                    style: TextStyle(
+                                      fontFamily: 'Lexend',
+                                      color: Color(0xFF181818),
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
                                 ),
                               ),
                             ),
                           ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0, 16, 10, 0),
-                            child: Container(
-                              width: 120,
-                              height: 110,
-                              constraints: const BoxConstraints(
-                                maxWidth: 500,
-                              ),
-                              decoration: BoxDecoration(
-                                color: const Color.fromARGB(255, 222, 172, 189),
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(
-                                  color: AppStyle.componentColor,
-                                  width: 2,
+                          GestureDetector(
+                            onTap: () => print('Card 4 was clicked'),
+                            child: Padding(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
+                                  0, 16, 10, 0),
+                              child: Container(
+                                width: 120,
+                                height: 110,
+                                constraints: const BoxConstraints(
+                                  maxWidth: 500,
                                 ),
-                              ),
-                              child: const Align(
-                                alignment: AlignmentDirectional(0, 0),
-                                child: Text(
-                                  'Expenses',
-                                  style: TextStyle(
-                                    fontFamily: 'Lexend',
-                                    color: Color(0xFF181818),
-                                    fontWeight: FontWeight.w500,
+                                decoration: BoxDecoration(
+                                  color: const Color(0xFFF1BCEF),
+                                  borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(
+                                    color: AppStyle.componentColor,
+                                    width: 2,
                                   ),
                                 ),
+                                child: const Align(
+                                  alignment: AlignmentDirectional(0, 0),
+                                  child: Text(
+                                    'Expenses',
+                                    style: TextStyle(
+                                      fontFamily: 'Lexend',
+                                      color: Color(0xFF181818),
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ),
+                                // ).animateOnPageLoad(animationsMap[
+                                //     'containerOnPageLoadAnimation4']!),
                               ),
-                              // ).animateOnPageLoad(animationsMap[
-                              //     'containerOnPageLoadAnimation4']!),
                             ),
                           ),
                         ],
@@ -488,18 +507,32 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0, 16, 10, 0),
-                            child: Container(
-                              width: 120,
-                              height: 110,
-                              constraints: const BoxConstraints(
-                                maxWidth: 500,
-                              ),
-                              decoration: BoxDecoration(
-                                color: AppStyle.componentColor,
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(
+                            child: GestureDetector(
+                              onTap: () => print('Card 5 was clicked'),
+                              child: Container(
+                                width: 120,
+                                height: 110,
+                                constraints: const BoxConstraints(
+                                  maxWidth: 500,
+                                ),
+                                decoration: BoxDecoration(
                                   color: AppStyle.componentColor,
-                                  width: 2,
+                                  borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(
+                                    color: AppStyle.componentColor,
+                                    width: 2,
+                                  ),
+                                ),
+                                child: const Align(
+                                  alignment: AlignmentDirectional(0, 0),
+                                  child: Text(
+                                    'Expenses',
+                                    style: TextStyle(
+                                      fontFamily: 'Lexend',
+                                      color: Color(0xFF181818),
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -521,23 +554,15 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                                   width: 2,
                                 ),
                               ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0, 16, 10, 0),
-                            child: Container(
-                              width: 120,
-                              height: 110,
-                              constraints: const BoxConstraints(
-                                maxWidth: 500,
-                              ),
-                              decoration: BoxDecoration(
-                                color: AppStyle.componentColor,
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(
-                                  color: AppStyle.componentColor,
-                                  width: 2,
+                              child: const Align(
+                                alignment: AlignmentDirectional(0, 0),
+                                child: Text(
+                                  'Expenses',
+                                  style: TextStyle(
+                                    fontFamily: 'Lexend',
+                                    color: Color(0xFF181818),
+                                    fontWeight: FontWeight.w500,
+                                  ),
                                 ),
                               ),
                             ),
@@ -557,6 +582,47 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                                 border: Border.all(
                                   color: AppStyle.componentColor,
                                   width: 2,
+                                ),
+                              ),
+                              child: const Align(
+                                alignment: AlignmentDirectional(0, 0),
+                                child: Text(
+                                  'Expenses',
+                                  style: TextStyle(
+                                    fontFamily: 'Lexend',
+                                    color: Color(0xFF181818),
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0, 16, 10, 0),
+                            child: Container(
+                              width: 120,
+                              height: 110,
+                              constraints: const BoxConstraints(
+                                maxWidth: 500,
+                              ),
+                              decoration: BoxDecoration(
+                                color: AppStyle.componentColor,
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(
+                                  color: AppStyle.componentColor,
+                                  width: 2,
+                                ),
+                              ),
+                              child: const Align(
+                                alignment: AlignmentDirectional(0, 0),
+                                child: Text(
+                                  'Expenses',
+                                  style: TextStyle(
+                                    fontFamily: 'Lexend',
+                                    color: Color(0xFF181818),
+                                    fontWeight: FontWeight.w500,
+                                  ),
                                 ),
                               ),
                             ),
@@ -572,6 +638,7 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         fontSize: 18,
+                        color: Colors.white,
                       ),
                     ),
                   ),
@@ -585,18 +652,32 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0, 16, 10, 0),
-                            child: Container(
-                              width: 120,
-                              height: 110,
-                              constraints: const BoxConstraints(
-                                maxWidth: 500,
-                              ),
-                              decoration: BoxDecoration(
-                                color: AppStyle.componentColor,
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(
+                            child: GestureDetector(
+                              onTap: () => print('Card 9 was clicked'),
+                              child: Container(
+                                width: 120,
+                                height: 110,
+                                constraints: const BoxConstraints(
+                                  maxWidth: 500,
+                                ),
+                                decoration: BoxDecoration(
                                   color: AppStyle.componentColor,
-                                  width: 2,
+                                  borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(
+                                    color: AppStyle.componentColor,
+                                    width: 2,
+                                  ),
+                                ),
+                                child: const Align(
+                                  alignment: AlignmentDirectional(0, 0),
+                                  child: Text(
+                                    'Expenses',
+                                    style: TextStyle(
+                                      fontFamily: 'Lexend',
+                                      color: Color(0xFF181818),
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
                                 ),
                               ),
                             ),
@@ -618,23 +699,15 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                                   width: 2,
                                 ),
                               ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0, 16, 10, 0),
-                            child: Container(
-                              width: 120,
-                              height: 110,
-                              constraints: const BoxConstraints(
-                                maxWidth: 500,
-                              ),
-                              decoration: BoxDecoration(
-                                color: AppStyle.componentColor,
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(
-                                  color: AppStyle.componentColor,
-                                  width: 2,
+                              child: const Align(
+                                alignment: AlignmentDirectional(0, 0),
+                                child: Text(
+                                  'Expenses',
+                                  style: TextStyle(
+                                    fontFamily: 'Lexend',
+                                    color: Color(0xFF181818),
+                                    fontWeight: FontWeight.w500,
+                                  ),
                                 ),
                               ),
                             ),
@@ -654,6 +727,47 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                                 border: Border.all(
                                   color: AppStyle.componentColor,
                                   width: 2,
+                                ),
+                              ),
+                              child: const Align(
+                                alignment: AlignmentDirectional(0, 0),
+                                child: Text(
+                                  'Expenses',
+                                  style: TextStyle(
+                                    fontFamily: 'Lexend',
+                                    color: Color(0xFF181818),
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0, 16, 10, 0),
+                            child: Container(
+                              width: 120,
+                              height: 110,
+                              constraints: const BoxConstraints(
+                                maxWidth: 500,
+                              ),
+                              decoration: BoxDecoration(
+                                color: AppStyle.componentColor,
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(
+                                  color: AppStyle.componentColor,
+                                  width: 2,
+                                ),
+                              ),
+                              child: const Align(
+                                alignment: AlignmentDirectional(0, 0),
+                                child: Text(
+                                  'Expenses',
+                                  style: TextStyle(
+                                    fontFamily: 'Lexend',
+                                    color: Color(0xFF181818),
+                                    fontWeight: FontWeight.w500,
+                                  ),
                                 ),
                               ),
                             ),
