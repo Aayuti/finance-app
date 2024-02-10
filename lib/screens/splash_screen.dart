@@ -72,13 +72,13 @@ class _SplashScreenState extends State<SplashScreen> {
               const Align(
                 alignment: AlignmentDirectional(0, -1),
                 child: Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0, 80, 0, 0),
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 100, 0, 0),
                   child: Text(
-                    'Expense Tracker',
+                    'MON-E',
                     style: TextStyle(
                       fontFamily: 'Montserrat',
                       color: Color(0xFFF1F5F7),
-                      fontSize: 40,
+                      fontSize: 50,
                       fontWeight: FontWeight.w500,
                     ),
                   ),

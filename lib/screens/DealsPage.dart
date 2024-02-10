@@ -27,6 +27,16 @@ class _OffersWidgetState extends State<OffersWidget> {
   Color _containerColor = const Color(0xFFF1CBEF); // Initial color
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
+  void _changeColor() {
+    setState(() {
+      print('function called');
+      _containerColor = _containerColor == const Color(0xFFF1CBEF)
+          ? Color(0xE8955196)
+          : const Color(0xFFF1CBEF); // Change color on tap
+      print('action complete');
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -49,16 +59,6 @@ class _OffersWidgetState extends State<OffersWidget> {
     //     ),
     //   );
     // }
-
-    void _changeColor() {
-      setState(() {
-        print('function called');
-        _containerColor = _containerColor == const Color(0xFFF1CBEF)
-            ? Color(0xE8955196)
-            : const Color(0xFFF1CBEF); // Change color on tap
-        print('action complete');
-      });
-    }
 
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
@@ -168,7 +168,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                                 Expanded(
                                   child: Padding(
                                     padding: const EdgeInsets.fromLTRB(8, 8, 4,
-                                        38), // Adjust the height as needed
+                                        0), // Adjust the height as needed
                                     child: Column(
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
@@ -276,7 +276,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                                   child: Padding(
                                     padding:
                                         const EdgeInsetsDirectional.fromSTEB(
-                                            8, 8, 4, 38),
+                                            8, 8, 4, 0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -387,7 +387,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                                   child: Padding(
                                     padding:
                                         const EdgeInsetsDirectional.fromSTEB(
-                                            8, 8, 4, 38),
+                                            8, 8, 4, 0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -496,7 +496,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                                 Expanded(
                                   child: Padding(
                                     padding: EdgeInsetsDirectional.fromSTEB(
-                                        8, 8, 4, 38),
+                                        8, 8, 4, 0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -608,7 +608,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                                   child: Padding(
                                     padding:
                                         const EdgeInsetsDirectional.fromSTEB(
-                                            8, 8, 4, 38),
+                                            8, 8, 4, 0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -719,7 +719,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                                   child: Padding(
                                     padding:
                                         const EdgeInsetsDirectional.fromSTEB(
-                                            8, 8, 4, 38),
+                                            8, 8, 4, 0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -831,7 +831,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                                   child: Padding(
                                     padding:
                                         const EdgeInsetsDirectional.fromSTEB(
-                                            8, 8, 4, 38),
+                                            8, 8, 4, 0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:

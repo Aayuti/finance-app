@@ -54,6 +54,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.black,
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -67,7 +68,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                       children: [
                         Card(
                           clipBehavior: Clip.antiAliasWithSaveLayer,
-                          color: Theme.of(context).primaryColor,
+                          color: Colors.white,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(40),
                           ),
@@ -81,7 +82,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 shape: BoxShape.circle,
                               ),
                               child: Image.asset(
-                                'assets/images/profile_image.png',
+                                'assets/images/new profile.png',
                               ),
                             ),
                           ),
@@ -108,6 +109,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
+                            color: Color(0xfff1cbef),
                           ),
                         ),
                         Padding(
@@ -117,8 +119,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                             style: TextStyle(
                               fontFamily: 'Lexend',
                               fontSize: 18,
-                              color: Color.fromARGB(255, 39, 35,
-                                  35), // Replace with the color you want
+                              color: Color(
+                                  0xfff1cbef), // Replace with the color you want
                             ),
                           ),
                         ),
@@ -130,8 +132,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
                         'Your latest updates are below.',
                         style: TextStyle(
                           fontSize: 14,
-                          color:
-                              Colors.black, // Replace with the color you want
+                          color: Color.fromARGB(255, 250, 250,
+                              250), // Replace with the color you want
                         ),
                       ),
                     ),
@@ -166,25 +168,25 @@ class _HomePageWidgetState extends State<HomePageWidget>
                         ),
                         borderRadius: BorderRadius.circular(8),
                       ),
-                      child: Column(
+                      child: const Column(
                         mainAxisSize: MainAxisSize.max,
                         children: [
+                          // Padding(
+                          //   padding: const EdgeInsetsDirectional.fromSTEB(
+                          //       20, 20, 20, 0),
+                          //   child: Row(
+                          //     mainAxisSize: MainAxisSize.max,
+                          //     children: [
+                          //       Image.asset(
+                          //         '',
+                          //         width: 44,
+                          //         height: 14,
+                          //         fit: BoxFit.cover,
+                          //       ),
+                          //     ],
+                          //   ),
+                          // ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                20, 20, 20, 0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Image.asset(
-                                  'assets/images/visa.png',
-                                  width: 44,
-                                  height: 14,
-                                  fit: BoxFit.cover,
-                                ),
-                              ],
-                            ),
-                          ),
-                          const Padding(
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(20, 36, 20, 0),
                             child: Row(
@@ -204,25 +206,27 @@ class _HomePageWidgetState extends State<HomePageWidget>
                           ),
 
                           // --------------------------------------------------------------------- --------------------------
-                          const Padding(
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(20, 8, 20, 0),
-                            child: Row(
-                              mainAxisSize: MainAxisSize.max,
-                              children: [
-                                Text(
-                                  '\$7,630',
-                                  style: TextStyle(
-                                    fontFamily: 'Lexend',
-                                    color: Colors
-                                        .black, // Replace with the color you want
-                                    fontSize: 32,
+                          Expanded(
+                            child: Padding(
+                              padding:
+                                  EdgeInsetsDirectional.fromSTEB(20, 8, 20, 0),
+                              child: Row(
+                                mainAxisSize: MainAxisSize.max,
+                                children: [
+                                  Text(
+                                    '\$7,630',
+                                    style: TextStyle(
+                                      fontFamily: 'Lexend',
+                                      color: Colors
+                                          .black, // Replace with the color you want
+                                      fontSize: 32,
+                                    ),
                                   ),
-                                ),
-                              ],
+                                ],
+                              ),
                             ),
                           ),
-                          const Padding(
+                          Padding(
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(20, 20, 20, 0),
                             child: Row(
