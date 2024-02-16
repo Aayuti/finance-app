@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import '/screens/LoginScreen.dart' show LoginScreen;
+// import '/Auth/LoginScreen.dart' show LoginScreen;
+import 'Auth/loginAuth.dart';
 
 class login_page_model extends State<LoginScreen> {
   //  State fields for stateful widgets in this page.

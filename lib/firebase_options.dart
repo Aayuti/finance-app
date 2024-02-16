@@ -44,38 +44,41 @@ class DefaultFirebaseOptions {
   }
 
   static const FirebaseOptions web = FirebaseOptions(
-    apiKey: 'AIzaSyCqnEHi4oJhvKWs5fcu_SkiXfEW7ZBd4Sc',
-    appId: '1:830014007940:web:3724a0714e03c0c87170d1',
-    messagingSenderId: '830014007940',
-    projectId: 'finance-manager-app-de5c1',
-    authDomain: 'finance-manager-app-de5c1.firebaseapp.com',
-    storageBucket: 'finance-manager-app-de5c1.appspot.com',
-    measurementId: 'G-LJLQ2YRPNC',
+    apiKey: 'AIzaSyBWBl-Qw99Co2NnCPIUoBQ6GTAgbWpnXjg',
+    appId: '1:1070698164567:web:027f8d9ff3cec30c1a0e12',
+    messagingSenderId: '1070698164567',
+    projectId: 'money-4jy4iq',
+    authDomain: 'money-4jy4iq.firebaseapp.com',
+    databaseURL: 'https://money-4jy4iq-default-rtdb.firebaseio.com',
+    storageBucket: 'money-4jy4iq.appspot.com',
   );
 
   static const FirebaseOptions android = FirebaseOptions(
-    apiKey: 'AIzaSyA-O9EVo6eGEeGSBK4Ei_nHaYMTNV8_buw',
-    appId: '1:830014007940:android:ce7c1995fe8f23347170d1',
-    messagingSenderId: '830014007940',
-    projectId: 'finance-manager-app-de5c1',
-    storageBucket: 'finance-manager-app-de5c1.appspot.com',
+    apiKey: 'AIzaSyCV-ln7QjjYMCPPGXr-6Os-wNr38QAsO2E',
+    appId: '1:1070698164567:android:3e94ee72b4a4fa1a1a0e12',
+    messagingSenderId: '1070698164567',
+    projectId: 'money-4jy4iq',
+    databaseURL: 'https://money-4jy4iq-default-rtdb.firebaseio.com',
+    storageBucket: 'money-4jy4iq.appspot.com',
   );
 
   static const FirebaseOptions ios = FirebaseOptions(
-    apiKey: 'AIzaSyAPuic_5No09fCMm_i7C-6mwSJvCRFTfws',
-    appId: '1:830014007940:ios:30ac39959702e9147170d1',
-    messagingSenderId: '830014007940',
-    projectId: 'finance-manager-app-de5c1',
-    storageBucket: 'finance-manager-app-de5c1.appspot.com',
+    apiKey: 'AIzaSyA4r2WAW3HLDg--oiu_fLc_rDYgzibtxuM',
+    appId: '1:1070698164567:ios:a964b569f7a5ef731a0e12',
+    messagingSenderId: '1070698164567',
+    projectId: 'money-4jy4iq',
+    databaseURL: 'https://money-4jy4iq-default-rtdb.firebaseio.com',
+    storageBucket: 'money-4jy4iq.appspot.com',
     iosBundleId: 'com.example.financeApp',
   );
 
   static const FirebaseOptions macos = FirebaseOptions(
-    apiKey: 'AIzaSyAPuic_5No09fCMm_i7C-6mwSJvCRFTfws',
-    appId: '1:830014007940:ios:007f666a85c9c7de7170d1',
-    messagingSenderId: '830014007940',
-    projectId: 'finance-manager-app-de5c1',
-    storageBucket: 'finance-manager-app-de5c1.appspot.com',
+    apiKey: 'AIzaSyA4r2WAW3HLDg--oiu_fLc_rDYgzibtxuM',
+    appId: '1:1070698164567:ios:2040fd09180eedb41a0e12',
+    messagingSenderId: '1070698164567',
+    projectId: 'money-4jy4iq',
+    databaseURL: 'https://money-4jy4iq-default-rtdb.firebaseio.com',
+    storageBucket: 'money-4jy4iq.appspot.com',
     iosBundleId: 'com.example.financeApp.RunnerTests',
   );
 }

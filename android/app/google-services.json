@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "830014007940",
-    "project_id": "finance-manager-app-de5c1",
-    "storage_bucket": "finance-manager-app-de5c1.appspot.com"
+    "project_number": "1070698164567",
+    "firebase_url": "https://money-4jy4iq-default-rtdb.firebaseio.com",
+    "project_id": "money-4jy4iq",
+    "storage_bucket": "money-4jy4iq.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:830014007940:android:ce7c1995fe8f23347170d1",
+        "mobilesdk_app_id": "1:1070698164567:android:3e94ee72b4a4fa1a1a0e12",
         "android_client_info": {
           "package_name": "com.example.finance_app"
         }
@@ -15,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyA-O9EVo6eGEeGSBK4Ei_nHaYMTNV8_buw"
+          "current_key": "AIzaSyCV-ln7QjjYMCPPGXr-6Os-wNr38QAsO2E"
         }
       ],
       "services": {
@@ -26,15 +27,15 @@
     },
     {
       "client_info": {
-        "mobilesdk_app_id": "1:830014007940:android:2a2cfa06ab4b815b7170d1",
+        "mobilesdk_app_id": "1:1070698164567:android:e860b31f799cb1e91a0e12",
         "android_client_info": {
-          "package_name": "com.example.finance_manager_app"
+          "package_name": "com.flutterflow.finwallet"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyA-O9EVo6eGEeGSBK4Ei_nHaYMTNV8_buw"
+          "current_key": "AIzaSyCV-ln7QjjYMCPPGXr-6Os-wNr38QAsO2E"
         }
       ],
       "services": {
