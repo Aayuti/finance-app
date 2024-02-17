@@ -41,7 +41,7 @@ class TransactionADDModel {
     reasonController = TextEditingController();
 
     // Assign validators
-    textController1Validator = _textController1Validator;
+    textController1Validator = _textController1Validator as String? Function(BuildContext p1, String? p2)?;
   }
 
   void dispose() {

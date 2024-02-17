@@ -3,19 +3,12 @@ import 'package:flutter/gestures.dart';
 
 // import '/auth/firebase_auth/auth_util.dart';
 // import '/backend/backend.dart';
-// import '/flutter_flow/flutter_flow_animations.dart';
-// import '/flutter_flow/flutter_flow_drop_down.dart';
-// import '/flutter_flow/flutter_flow_theme.dart';
-// import '/flutter_flow/flutter_flow_util.dart';
-// import '/flutter_flow/flutter_flow_widgets.dart';
-// import '/flutter_flow/form_field_controller.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import '../models/BudgetList.dart';
 
 import '../models/add_transactions_model.dart';
 export '../models/add_transactions_model.dart';
@@ -29,7 +22,8 @@ class TransactionADDWidget extends StatefulWidget {
 
 class _TransactionADDWidgetState extends State<TransactionADDWidget>
     with TickerProviderStateMixin {
-  late TransactionADDModel _model;
+  // late TransactionADDModel _model;
+  String currentUserReference = 'user123';
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -162,11 +156,23 @@ class _TransactionADDWidgetState extends State<TransactionADDWidget>
   //   );
   // }
 
-  @override
-  void dispose() {
-    _model.dispose();
+  // @override
+  // void dispose() {
+  //   _model.dispose();
 
-    super.dispose();
+  //   super.dispose();
+  // }
+
+  Stream<List<BudgetListRecord>> queryBudgetListRecord(
+      {required String budgetUser}) {
+    // Your implementation to fetch budget records goes here
+    // For example, if you're using Firebase Firestore:
+    // return FirebaseFirestore.instance.collection('budgets').snapshots().map((snapshot) =>
+    //   snapshot.docs.map((doc) => BudgetListRecord.fromSnapshot(doc)).toList()
+    // );
+
+    // If you don't have data to return yet, return an empty stream:
+    return Stream.value([]);
   }
 
   @override
@@ -180,17 +186,18 @@ class _TransactionADDWidgetState extends State<TransactionADDWidget>
     //   );
     // }
 
+    final subtitleStyle = Theme.of(context).textTheme.titleMedium;
     return Scaffold(
       key: scaffoldKey,
       backgroundColor: Color(0xFF181818),
       body: Form(
-        key: _model.formKey,
+        // key: _model.formKey,
         autovalidateMode: AutovalidateMode.disabled,
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
             Material(
-              color: Colors.transparent,
+              color: Color(0XFFF1BCEF),
               elevation: 3,
               shape: const RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(
@@ -202,9 +209,9 @@ class _TransactionADDWidgetState extends State<TransactionADDWidget>
               ),
               child: Container(
                 width: MediaQuery.sizeOf(context).width,
-                height: MediaQuery.sizeOf(context).height * 0.8,
+                height: MediaQuery.sizeOf(context).height * 1,
                 decoration: const BoxDecoration(
-                  color: Colors.red,
+                  color: Color(0xFF181818),
                   borderRadius: BorderRadius.only(
                     bottomLeft: Radius.circular(16),
                     bottomRight: Radius.circular(16),
@@ -217,311 +224,272 @@ class _TransactionADDWidgetState extends State<TransactionADDWidget>
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Align(
+                      const Align(
                         alignment: AlignmentDirectional(-1, -1),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                                'Add Transaction' /* Add Transaction */,
-                              style: ,
+                              'Add Transaction' /* Add Transaction */,
+                              style: TextStyle(
+                                color: Color(0XFFF1BCEF),
+                                fontWeight: FontWeight.w500,
+                                fontSize: 30,
+                              ),
                             ),
                           ],
                         ),
                       ),
                       Container(
-  width: MediaQuery.of(context).size.width * 0.8,
-  height: 100,
-  constraints: BoxConstraints(
-    maxWidth: MediaQuery.of(context).size.width * 0.8,
-  ),
-  decoration: BoxDecoration(),
-  child: Padding(
-    padding: EdgeInsets.fromLTRB(0, 16, 0, 0),
-    child: TextFormField(
-      controller: _model.textController1,
-      focusNode: _model.textFieldFocusNode,
-      obscureText: false,
-      decoration: InputDecoration(
-        labelText: 'Amount',
-        labelStyle: TextStyle(
-          fontFamily: 'Lexend',
-          color: Colors.grey[400],
-          fontWeight: FontWeight.w300,
-        ),
-        hintText: 'Enter amount',
-        hintStyle: TextStyle(
-          fontFamily: 'Lexend',
-          color: Colors.grey[400],
-          fontWeight: FontWeight.w300,
-        ),
-        enabledBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.blue, // Your color
-            width: 2,
-          ),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        focusedBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.transparent,
-            width: 2,
-          ),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        errorBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.transparent,
-            width: 2,
-          ),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        focusedErrorBorder: UnderlineInputBorder(
-          borderSide: BorderSide(
-            color: Colors.transparent,
-            width: 2,
-          ),
-          borderRadius: BorderRadius.circular(8),
-        ),
-        contentPadding: EdgeInsets.fromLTRB(20, 24, 24, 24),
-        prefixIcon: Icon(
-          Icons.attach_money_rounded,
-          color: Colors.black, // Your color
-          size: 32,
-        ),
-      ),
-      style: TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.normal,
-      ),
-      textAlign: TextAlign.center,
-      keyboardType: TextInputType.number,
-      validator: _textController1Validator,
-    ).animateOnPageLoad(
-      animationsMap['textFieldOnPageLoadAnimation1']!,
-    ),
-  ),
-),
+                        width: MediaQuery.of(context).size.width * 0.8,
+                        height: 100,
+                        constraints: BoxConstraints(
+                          maxWidth: MediaQuery.of(context).size.width * 0.8,
+                        ),
+                        decoration: BoxDecoration(),
+                        child: Padding(
+                            padding: EdgeInsets.fromLTRB(0, 16, 0, 0),
+                            child: TextFormField(
+                              // controller: _model.textController1,
+                              // focusNode: _model.textFieldFocusNode,
+                              obscureText: false,
+
+                              decoration: InputDecoration(
+                                labelText: 'Amount',
+                                labelStyle: TextStyle(
+                                  fontFamily: 'Lexend',
+                                  color: Colors.grey[400],
+                                  fontWeight: FontWeight.w300,
+                                ),
+                                hintText: 'Enter amount',
+                                hintStyle: TextStyle(
+                                  fontFamily: 'Lexend',
+                                  color: Colors.grey[400],
+                                  fontWeight: FontWeight.w300,
+                                  // fontSize: 28,
+                                ),
+                                enabledBorder: UnderlineInputBorder(
+                                  borderSide: const BorderSide(
+                                    color: Color(0XFFF1BCEF), // Your color
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                focusedBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0XFFF1BCEF),
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                errorBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0XFFF1BCEF),
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                focusedErrorBorder: UnderlineInputBorder(
+                                  borderSide: BorderSide(
+                                    color: Color(0XFFF1BCEF),
+                                    width: 2,
+                                  ),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                                contentPadding:
+                                    EdgeInsets.fromLTRB(20, 24, 24, 24),
+                                prefixIcon: Icon(
+                                  Icons.attach_money_rounded,
+                                  color: Colors.white, // Your color
+                                  size: 32,
+                                ),
+                              ),
+                              style: const TextStyle(
+                                color: Color(0XFFF1BCEF),
+                                fontSize: 24,
+                                fontWeight: FontWeight.normal,
+                              ),
+                              textAlign: TextAlign.center,
+                              keyboardType: TextInputType.number,
+                              // validator: textController1Validator,
+                            )
+                            // .animateOnPageLoad(
+                            //   animationsMap['textFieldOnPageLoadAnimation1']!,
+                            // ),
+                            ),
+                      ),
 
                       //-------------------------------------------------
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                        child: TextFormField(
-                          controller: _model.spentAtController,
-                          focusNode: _model.spentAtFocusNode,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            labelText: FFLocalizations.of(context).getText(
-                              'ohewrgsv' /* Spent At */,
+                          padding:
+                              const EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                          child: TextFormField(
+                            // controller: _model.spentAtController,
+                            // focusNode: _model.spentAtFocusNode,
+                            obscureText: false,
+                            style: const TextStyle(
+                              color: Colors.white,
                             ),
-                            labelStyle: FlutterFlowTheme.of(context).bodySmall,
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).alternate,
-                                width: 2,
+                            decoration: InputDecoration(
+                              labelText: 'Spent At',
+                              // labelStyle: FlutterFlowTheme.of(context).bodySmall,
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(255, 118, 116, 116),
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
                               ),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color(0x00000000),
-                                width: 2,
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color(0XFFF1BCEF),
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
                               ),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color(0x00000000),
-                                width: 2,
+                              errorBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color(0XFFF1BCEF),
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
                               ),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color(0x00000000),
-                                width: 2,
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color(0XFFF1BCEF),
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              contentPadding: EdgeInsetsDirectional.fromSTEB(
+                                  20, 24, 24, 24),
                             ),
-                            contentPadding:
-                                EdgeInsetsDirectional.fromSTEB(20, 24, 24, 24),
+                            // style: FlutterFlowTheme.of(context).bodySmall,
+                            // validator: _model.spentAtControllerValidator
+                            //     .asValidator(context),
+                          )
+                          // .animateOnPageLoad(
+                          //     animationsMap['textFieldOnPageLoadAnimation2']!),
                           ),
-                          style: FlutterFlowTheme.of(context).bodySmall,
-                          validator: _model.spentAtControllerValidator
-                              .asValidator(context),
-                        ).animateOnPageLoad(
-                            animationsMap['textFieldOnPageLoadAnimation2']!),
-                      ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                         child: StreamBuilder<List<BudgetListRecord>>(
                           stream: queryBudgetListRecord(
-                            queryBuilder: (budgetListRecord) =>
-                                budgetListRecord.where(
-                              'budgetUser',
-                              isEqualTo: currentUserReference,
-                            ),
-                            singleRecord: true,
-                          ),
+                              budgetUser: currentUserReference),
                           builder: (context, snapshot) {
-                            // Customize what your widget looks like when it's loading.
                             if (!snapshot.hasData) {
-                              return Center(
-                                child: SizedBox(
-                                  width: 40,
-                                  height: 40,
-                                  child: SpinKitCircle(
-                                    color: FlutterFlowTheme.of(context).primary,
-                                    size: 40,
-                                  ),
-                                ),
+                              return const Center(
+                                child:
+                                    CircularProgressIndicator(), // Use any loading indicator here
                               );
                             }
-                            List<BudgetListRecord> budgetBudgetListRecordList =
-                                snapshot.data!;
-                            // Return an empty Container when the item does not exist.
-                            if (snapshot.data!.isEmpty) {
-                              return Container();
-                            }
-                            final budgetBudgetListRecord =
-                                budgetBudgetListRecordList.isNotEmpty
-                                    ? budgetBudgetListRecordList.first
-                                    : null;
-                            return FlutterFlowDropDown<String>(
-                              controller: _model.budgetValueController ??=
-                                  FormFieldController<String>(null),
-                              options: [
-                                FFLocalizations.of(context).getText(
-                                  '3170k9n1' /* Office Budget */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  'abz6nm8z' /* External Transfer */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  '3y95vtb6' /* Food and Bev */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  '5rnz1i00' /* Travel */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  'p8pw8r2m' /* Recharge */,
-                                ),
-                                FFLocalizations.of(context).getText(
-                                  'xdailp9x' /* Subscription */,
-                                )
-                              ],
-                              onChanged: (val) =>
-                                  setState(() => _model.budgetValue = val),
-                              width: MediaQuery.sizeOf(context).width * 0.9,
-                              height: 60,
-                              textStyle:
-                                  FlutterFlowTheme.of(context).bodyMedium,
-                              hintText: FFLocalizations.of(context).getText(
-                                '861el4k4' /* Select Category */,
-                              ),
-                              icon: Icon(
-                                Icons.keyboard_arrow_down_rounded,
-                                color: FlutterFlowTheme.of(context).grayLight,
-                                size: 15,
-                              ),
-                              fillColor: FlutterFlowTheme.of(context)
-                                  .secondaryBackground,
-                              elevation: 2,
-                              borderColor:
-                                  FlutterFlowTheme.of(context).alternate,
-                              borderWidth: 2,
-                              borderRadius: 8,
-                              margin: EdgeInsetsDirectional.fromSTEB(
-                                  20, 20, 12, 20),
-                              hidesUnderline: true,
-                              isSearchable: false,
-                              isMultiSelect: false,
-                            ).animateOnPageLoad(
-                                animationsMap['dropDownOnPageLoadAnimation']!);
+
+                            List<BudgetListRecord> budgetList = snapshot.data!;
+
+                            return DropdownButtonFormField<String>(
+                              items: budgetList.map((record) {
+                                return DropdownMenuItem(
+                                  value: record.itemName,
+                                  child: Text(record.itemName),
+                                );
+                              }).toList(),
+                              onChanged: (String? value) {
+                                // Handle onChanged event
+                              },
+                            );
                           },
                         ),
                       ),
+                      // .animateOnPageLoad(
+                      //                               animationsMap['dropDownOnPageLoadAnimation']!);
+                      // },
+                      // ),
+                      // ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                        child: TextFormField(
-                          controller: _model.reasonController,
-                          focusNode: _model.reasonFocusNode,
-                          obscureText: false,
-                          decoration: InputDecoration(
-                            labelStyle: FlutterFlowTheme.of(context).bodyMedium,
-                            hintText: FFLocalizations.of(context).getText(
-                              'swxms7ln' /* Comment */,
-                            ),
-                            hintStyle: FlutterFlowTheme.of(context).bodySmall,
-                            enabledBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: FlutterFlowTheme.of(context).alternate,
-                                width: 2,
+                          padding: EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
+                          child: TextFormField(
+                            // controller: _model.reasonController,
+                            // focusNode: _model.reasonFocusNode,
+                            obscureText: false,
+                            decoration: InputDecoration(
+                              // labelStyle: FlutterFlowTheme.of(context).bodyMedium,
+                              hintText: 'Comment',
+                              hintStyle: const TextStyle(
+                                  fontWeight: FontWeight.normal,
+                                  color: Color.fromARGB(255, 118, 116, 116)),
+                              enabledBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                  color: Color(0xFFF1BCEF),
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
                               ),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            focusedBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color(0x00000000),
-                                width: 2,
+                              focusedBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0XFFF1BCEF),
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
                               ),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            errorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color(0x00000000),
-                                width: 2,
+                              errorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0XFFF1BCEF),
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
                               ),
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            focusedErrorBorder: OutlineInputBorder(
-                              borderSide: BorderSide(
-                                color: Color(0x00000000),
-                                width: 2,
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderSide: BorderSide(
+                                  color: Color(0XFFF1BCEF),
+                                  width: 2,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
                               ),
-                              borderRadius: BorderRadius.circular(8),
+                              contentPadding:
+                                  EdgeInsetsDirectional.fromSTEB(20, 40, 24, 0),
                             ),
-                            contentPadding:
-                                EdgeInsetsDirectional.fromSTEB(20, 40, 24, 0),
+                            style: const TextStyle(
+                                fontWeight: FontWeight.normal,
+                                color: Colors.white),
+                            textAlign: TextAlign.start,
+                            maxLines: 4,
+                            // validator: _model.reasonControllerValidator
+                            //     .asValidator(context),
+                          )
+                          // .animateOnPageLoad(
+                          //     animationsMap['textFieldOnPageLoadAnimation3']!),
                           ),
-                          style: FlutterFlowTheme.of(context).bodyMedium,
-                          textAlign: TextAlign.start,
-                          maxLines: 4,
-                          validator: _model.reasonControllerValidator
-                              .asValidator(context),
-                        ).animateOnPageLoad(
-                            animationsMap['textFieldOnPageLoadAnimation3']!),
-                      ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(0, 50, 0, 0),
-                        child: FFButtonWidget(
+                        padding: EdgeInsets.fromLTRB(0, 50, 0, 0),
+                        child: TextButton(
                           onPressed: () {
                             print('Button pressed ...');
                           },
-                          text: FFLocalizations.of(context).getText(
-                            'y3xaka0l' /* Add */,
-                          ),
-                          options: FFButtonOptions(
-                            width: double.infinity,
-                            height: 38,
-                            padding:
-                                EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
-                            iconPadding:
-                                EdgeInsetsDirectional.fromSTEB(0, 0, 0, 0),
-                            color: FlutterFlowTheme.of(context).primary,
-                            textStyle: FlutterFlowTheme.of(context)
-                                .titleSmall
-                                .override(
-                                  fontFamily: 'Lexend',
-                                  color: FlutterFlowTheme.of(context).alternate,
-                                ),
+                          style: TextButton.styleFrom(
+                            backgroundColor: const Color(0XFFF1BCEF),
                             elevation: 3,
-                            borderSide: BorderSide(
-                              color: Colors.transparent,
-                              width: 1,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(8),
                             ),
-                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: Container(
+                            width: double.infinity,
+                            height: 48,
+                            padding: EdgeInsets.fromLTRB(24, 0, 24, 0),
+                            child: Center(
+                              child: Text(
+                                'Add', // You can replace 'Add' with your desired button text
+                                style: subtitleStyle != null
+                                    ? subtitleStyle.copyWith(
+                                        fontFamily: 'Lexend',
+                                        color: Color.fromARGB(255, 10, 10, 10),
+                                        fontWeight: FontWeight.bold,
+                                      )
+                                    : TextStyle(), // Handle case where subtitleStyle is null
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -536,6 +504,8 @@ class _TransactionADDWidgetState extends State<TransactionADDWidget>
     );
   }
 }
+
+class FormFieldController {}
 
 void setupAnimations(Iterable<AnimationInfo> where,
     _TransactionADDWidgetState transactionADDWidgetState) {}
@@ -585,5 +555,5 @@ class ScaleEffect implements AnimationEffect {
     required this.duration,
     required this.begin,
     required this.end,
-  })
+  });
 }

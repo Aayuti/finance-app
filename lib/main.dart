@@ -8,6 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:finance_app/screens/splash_screen.dart';
 import 'package:finance_app/home_page.dart';
 import 'package:finance_app/screens/LoginScreen.dart';
+import 'package:finance_app/screens/AddTransactions.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,7 +25,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: LoginScreen(),
+      home: TransactionADDWidget(),
     );
   }
 }
