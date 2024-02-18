@@ -118,8 +118,11 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: Padding(
                   padding: const EdgeInsetsDirectional.fromSTEB(0, 350, 0, 0),
                   child: ElevatedButton(
-                    onPressed: () {
-                      print('Button pressed ...');
+                   onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const LoginScreen()),
+                      );
                     },
                     style: ElevatedButton.styleFrom(
                       fixedSize: const Size(350, 50),
@@ -153,7 +156,13 @@ class _SplashScreenState extends State<SplashScreen> {
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(0, 25, 0, 0),
                 child: InkWell(
-                  onTap: _launchURL,
+                  onTap: (){
+                    //No signUp page??
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => const SignUp()),
+                      );
+                  },
                   child: const Text(
                     'Sign Up',
                     textAlign: TextAlign.center,
