@@ -1,3 +1,4 @@
+import 'package:finance_app/Auth/loginAuth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'dart:io';
@@ -158,10 +159,10 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: InkWell(
                   onTap: (){
                     //No signUp page??
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => const SignUp()),
-                      );
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(builder: (context) => const SignUp()),
+                      // );
                   },
                   child: const Text(
                     'Sign Up',
