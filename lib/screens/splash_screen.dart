@@ -14,7 +14,7 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen> {
   // late HomePageModel _model;
-  bool isiOS = Platform.isIOS;
+  // bool isiOS = Platform.isIOS;
   // final babyPink = componentColor;
   final black = const Color(0xFF181818);
   final white = const Color(0xFFF1F5F7);
@@ -44,14 +44,14 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     // Replace the following line with the actual widget or layout for your splash screen
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
+    // if (isiOS) {
+    //   SystemChrome.setSystemUIOverlayStyle(
+    //     SystemUiOverlayStyle(
+    //       statusBarBrightness: Theme.of(context).brightness,
+    //       systemStatusBarContrastEnforced: true,
+    //     ),
+    //   );
+    // }
 
     return GestureDetector(
       onTap: () {
