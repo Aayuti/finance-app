@@ -1,4 +1,4 @@
-// import '/auth/firebase_auth/auth_util.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
@@ -17,8 +17,43 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final FirebaseAuth _auth = FirebaseAuth.instance;
-  TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+
+  bool _isLoading = false;
+
+  Future<void> _signInWithEmailAndPassword() async {
+    setState(() {
+      _isLoading = true;
+    });
+
+    try {
+      print('inside00');
+
+      UserCredential userCredential = await _auth.signInWithEmailAndPassword(
+        email: _emailController.text.trim(),
+        password: _passwordController.text.trim(),
+      );
+      // Authentication successful
+      print('User logged in: ${userCredential.user!.email}');
+      // Navigate to the next screen or perform any other action
+    } on FirebaseAuthException catch (e) {
+      if (e.code == 'user-not-found') {
+        print('No user found for that email.');
+      } else if (e.code == 'wrong-password') {
+        print('Wrong password provided for that user.');
+      } else {
+        print('Error: $e');
+      }
+    } catch (e) {
+      print('Error: $e');
+    }
+
+    setState(() {
+      _isLoading = false;
+    });
+  }
+
   _launchSite() async {
     Uri url = Uri.parse('https://www.google.com');
     if (await launchUrl(url)) {
@@ -108,6 +143,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Container(
                     width: 350,
                     child: TextField(
+                      controller: _emailController,
                       style: const TextStyle(color: Colors.white),
                       decoration: InputDecoration(
                         hintText: "email",
@@ -147,6 +183,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   child: Container(
                     width: 350,
                     child: TextField(
+                      controller: _passwordController,
                       style: const TextStyle(color: Colors.white),
                       obscureText: true,
                       decoration: InputDecoration(
@@ -225,26 +262,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     // ),
 
                     ElevatedButton(
-                      onPressed: () async {
-                        // print('Button was pressed');
-                        String email = _emailController.text.trim();
-                        String password = _passwordController.text.trim();
-
-                        try {
-                          UserCredential userCredential =
-                              await _auth.signInWithEmailAndPassword(
-                            email: email,
-                            password: password,
-                          );
-
-                          // Authentication successful, you can navigate to the next screen or perform any other action.
-                          print(
-                              'User logged in: ${userCredential.user?.email}');
-                        } catch (e) {
-                          // Authentication failed, handle the error (display a snackbar, show an error message, etc.).
-                          print('Login failed');
-                        }
-                      },
+                      onPressed: _signInWithEmailAndPassword,
                       style: ElevatedButton.styleFrom(
                         backgroundColor:
                             const Color(0xFFF1CBEF), // Set your button color

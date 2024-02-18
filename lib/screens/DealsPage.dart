@@ -31,7 +31,7 @@ class _OffersWidgetState extends State<OffersWidget> {
     setState(() {
       print('function called');
       _containerColor = _containerColor == const Color(0xFFF1CBEF)
-          ? Color(0xE8955196)
+          ? const Color(0xE8955196)
           : const Color(0xFFF1CBEF); // Change color on tap
       print('action complete');
     });
@@ -86,7 +86,7 @@ class _OffersWidgetState extends State<OffersWidget> {
           actions: [],
           centerTitle: true,
           elevation: 0,
-          surfaceTintColor: Color(0xFF181818),
+          surfaceTintColor: const Color(0xFF181818),
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -98,7 +98,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Padding(
-                      padding: EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
+                      padding: const EdgeInsetsDirectional.fromSTEB(0, 5, 0, 0),
                       child: Text(
                         'Find new exclusive offers'.tr() ??
                             'Fallback text' /* Find new exclusive offers... */,
@@ -109,7 +109,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                 ),
               ),
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 12, 0, 0),
                 child: ListView(
                   padding: EdgeInsets.zero,
                   primary: false,
@@ -122,7 +122,8 @@ class _OffersWidgetState extends State<OffersWidget> {
                         print('card clicked');
                       },
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 15),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 15),
                         child: Container(
                           width: MediaQuery.of(context).size.width,
                           height: 105,
@@ -158,7 +159,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                                       topRight: Radius.circular(30),
                                     ),
                                     child: Image.network(
-                                      'https://images.unsplash.com/photo-1546069901-d5bfd2cbfb1f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1760&q=80',
+                                      'assets/images/apple.png',
                                       width: 80,
                                       height: 80,
                                       fit: BoxFit.cover,
@@ -186,7 +187,8 @@ class _OffersWidgetState extends State<OffersWidget> {
                                           padding:
                                               const EdgeInsets.only(top: 10),
                                           child: AutoSizeText(
-                                            'Subtext' ?? 'Fallback statement',
+                                            'Listen to music add-free!' ??
+                                                'Fallback statement',
                                             textAlign: TextAlign.start,
                                             style: TextStyle(
                                               fontFamily: 'Poppins',
@@ -229,7 +231,8 @@ class _OffersWidgetState extends State<OffersWidget> {
                         print('second card clicked');
                       },
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 15),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 15),
                         child: Container(
                           width: double.infinity,
                           height: 105,
@@ -265,7 +268,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                                       topRight: Radius.circular(30),
                                     ),
                                     child: Image.network(
-                                      'https://images.unsplash.com/photo-1546069901-d5bfd2cbfb1f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1760&q=80',
+                                      'assets/images/spotify.png',
                                       width: 80,
                                       height: 80,
                                       fit: BoxFit.cover,
@@ -297,7 +300,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                                             padding: const EdgeInsetsDirectional
                                                 .fromSTEB(0, 4, 8, 0),
                                             child: AutoSizeText(
-                                              'Subtext', // Replace 'Subtext' with your desired text
+                                              'Listen to songs add-free!', // Replace 'Subtext' with your desired text
                                               textAlign: TextAlign.start,
                                               style: TextStyle(
                                                 fontFamily: 'Poppins',
@@ -376,18 +379,17 @@ class _OffersWidgetState extends State<OffersWidget> {
                                       topRight: Radius.circular(30),
                                     ),
                                     child: Image.network(
-                                      'https://images.unsplash.com/photo-1547496502-affa22d38842?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2177&q=80',
+                                      'assets/images/samsung.png',
                                       width: 80,
                                       height: 80,
                                       fit: BoxFit.cover,
                                     ),
                                   ),
                                 ),
-                                Expanded(
+                                const Expanded(
                                   child: Padding(
-                                    padding:
-                                        const EdgeInsetsDirectional.fromSTEB(
-                                            8, 8, 4, 0),
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        8, 8, 4, 0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -395,7 +397,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        const Text(
+                                        Text(
                                           'Samsung',
                                           style: TextStyle(
                                             fontFamily: 'Lexend',
@@ -405,15 +407,16 @@ class _OffersWidgetState extends State<OffersWidget> {
                                           ),
                                         ),
                                         Padding(
-                                          padding: const EdgeInsetsDirectional
-                                              .fromSTEB(0, 4, 8, 0),
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  0, 4, 8, 0),
                                           child: AutoSizeText(
-                                            'Subtext', // Replace 'Subtext' with your desired text
+                                            'Get services at discounted prices', // Replace 'Subtext' with your desired text
                                             textAlign: TextAlign.start,
                                             style: TextStyle(
                                               fontFamily: 'Poppins',
-                                              color: Theme.of(context)
-                                                  .hoverColor, // Assuming 'alternate' color corresponds to accentColor
+                                              color: Color(
+                                                  0xFF181818), // Assuming 'alternate' color corresponds to accentColor
                                             ),
                                           ),
                                         ),
@@ -486,7 +489,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                                       topRight: Radius.circular(30),
                                     ),
                                     child: Image.network(
-                                      'https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NXx8Zm9vZHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60',
+                                      'assets/images/github.png',
                                       width: 80,
                                       height: 80,
                                       fit: BoxFit.cover,
@@ -495,8 +498,9 @@ class _OffersWidgetState extends State<OffersWidget> {
                                 ),
                                 Expanded(
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        8, 8, 4, 0),
+                                    padding:
+                                        const EdgeInsetsDirectional.fromSTEB(
+                                            8, 8, 4, 0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
                                       mainAxisAlignment:
@@ -514,11 +518,10 @@ class _OffersWidgetState extends State<OffersWidget> {
                                           ),
                                         ),
                                         Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 4, 8, 0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(0, 4, 8, 0),
                                           child: AutoSizeText(
-                                            'Subtext', // Replace 'Subtext' with your desired text
+                                            'Get servies at discounted prices!', // Replace 'Subtext' with your desired text
                                             textAlign: TextAlign.start,
                                             style: TextStyle(
                                               fontFamily: 'Poppins',
@@ -565,16 +568,16 @@ class _OffersWidgetState extends State<OffersWidget> {
                         child: Container(
                           width: double.infinity,
                           height: 105,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Color(0xFFF1CBEF),
-                            boxShadow: const [
+                            boxShadow: [
                               BoxShadow(
                                 blurRadius: 3,
                                 color: Color(0x411D2429),
                                 offset: Offset(0, 1),
                               )
                             ],
-                            borderRadius: const BorderRadius.only(
+                            borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(30),
                               bottomRight: Radius.circular(30),
                               topLeft: Radius.circular(30),
@@ -597,7 +600,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                                       topRight: Radius.circular(30),
                                     ),
                                     child: Image.network(
-                                      'https://images.unsplash.com/photo-1467003909585-2f8a72700288?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fGZvb2R8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+                                      'assets/images/lenovo.png',
                                       width: 80,
                                       height: 80,
                                       fit: BoxFit.cover,
@@ -626,11 +629,10 @@ class _OffersWidgetState extends State<OffersWidget> {
                                           ),
                                         ),
                                         Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 4, 8, 0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(0, 4, 8, 0),
                                           child: AutoSizeText(
-                                            'Subtext', // Replace 'Subtext' with your desired text
+                                            'Get servies at discounted prices!', // Replace 'Subtext' with your desired text
                                             textAlign: TextAlign.start,
                                             style: TextStyle(
                                               fontFamily: 'Poppins',
@@ -672,20 +674,21 @@ class _OffersWidgetState extends State<OffersWidget> {
                         print('sixth card clicked');
                       },
                       child: Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(16, 0, 16, 15),
+                        padding:
+                            const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 15),
                         child: Container(
                           width: double.infinity,
                           height: 105,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Color(0xFFF1CBEF),
-                            boxShadow: const [
+                            boxShadow: [
                               BoxShadow(
                                 blurRadius: 3,
                                 color: Color(0x411D2429),
                                 offset: Offset(0, 1),
                               )
                             ],
-                            borderRadius: const BorderRadius.only(
+                            borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(30),
                               bottomRight: Radius.circular(30),
                               topLeft: Radius.circular(30),
@@ -708,7 +711,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                                       topRight: Radius.circular(30),
                                     ),
                                     child: Image.network(
-                                      'https://images.unsplash.com/photo-1473093295043-cdd812d0e601?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTh8fGZvb2R8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60',
+                                      'assets/images/microsoft.png',
                                       width: 80,
                                       height: 80,
                                       fit: BoxFit.cover,
@@ -737,11 +740,10 @@ class _OffersWidgetState extends State<OffersWidget> {
                                           ),
                                         ),
                                         Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 4, 8, 0),
+                                          padding: const EdgeInsetsDirectional
+                                              .fromSTEB(0, 4, 8, 0),
                                           child: AutoSizeText(
-                                            'Subtext', // Replace 'Subtext' with your desired text
+                                            'Get servies at discounted prices!', // Replace 'Subtext' with your desired text
                                             textAlign: TextAlign.start,
                                             style: TextStyle(
                                               fontFamily: 'Poppins',
@@ -788,16 +790,16 @@ class _OffersWidgetState extends State<OffersWidget> {
                         child: Container(
                           width: double.infinity,
                           height: 105,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Color(0xFFF1CBEF),
-                            boxShadow: const [
+                            boxShadow: [
                               BoxShadow(
                                 blurRadius: 3,
                                 color: Color(0x411D2429),
                                 offset: Offset(0, 1),
                               )
                             ],
-                            borderRadius: const BorderRadius.only(
+                            borderRadius: BorderRadius.only(
                               bottomLeft: Radius.circular(30),
                               bottomRight: Radius.circular(30),
                               topLeft: Radius.circular(30),
@@ -820,7 +822,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                                       topRight: Radius.circular(30),
                                     ),
                                     child: Image.network(
-                                      'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80',
+                                      'assets/images/food.png',
                                       width: 80,
                                       height: 80,
                                       fit: BoxFit.cover,
