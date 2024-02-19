@@ -115,9 +115,19 @@ class _SplashScreenState extends State<SplashScreen> {
                     ),
                   ),
                 ), */
+
+              Padding(
+                padding: const EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
+                child: Image.network(
+                  'assets/images/Color logo - no background.png',
+                  height: 200,
+                  width: 200,
+                  fit: BoxFit.cover,
+                ),
+              ),
               Flexible(
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(0, 350, 0, 0),
+                  padding: const EdgeInsetsDirectional.fromSTEB(0, 100, 0, 0),
                   child: ElevatedButton(
                     onPressed: () {
                       Navigator.push(

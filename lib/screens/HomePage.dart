@@ -9,6 +9,7 @@
 //-----------------------------------------------------------------------------
 
 import 'package:flutter/material.dart';
+import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 
 class HomePageWidget extends StatefulWidget {
   const HomePageWidget({Key? key}) : super(key: key);
@@ -21,6 +22,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
     with TickerProviderStateMixin {
   late AnimationController _rowAnimationController;
   late AnimationController _columnAnimationController;
+  PageController _pageController = PageController();
+  int _currentIndex = 0;
 
   @override
   void initState() {
@@ -37,6 +40,8 @@ class _HomePageWidgetState extends State<HomePageWidget>
     );
 
     _playAnimations();
+
+    _pageController = PageController();
   }
 
   void _playAnimations() {
@@ -49,11 +54,58 @@ class _HomePageWidgetState extends State<HomePageWidget>
     _rowAnimationController.dispose();
     _columnAnimationController.dispose();
     super.dispose();
+
+    _pageController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavyBar(
+        containerHeight: 55.0,
+        backgroundColor: Color(0xFF181818),
+        selectedIndex: _currentIndex,
+        showElevation: false,
+        itemCornerRadius: 24,
+        curve: Curves.easeIn,
+        onItemSelected: (index) => setState(() {
+          _currentIndex = index;
+          _pageController.animateToPage(index,
+              duration: const Duration(milliseconds: 100),
+              curve: Curves.easeIn);
+        }),
+        items: <BottomNavyBarItem>[
+          BottomNavyBarItem(
+            icon: const Icon(Icons.home),
+            title: const Text('Home'),
+            activeColor: Color(0xFFF1BCEF),
+            textAlign: TextAlign.center,
+            inactiveColor: Colors.white,
+          ),
+          BottomNavyBarItem(
+            icon: Icon(Icons.currency_rupee),
+            title: const Text('Transactions'),
+            activeColor: const Color(0xFFF1BCEF),
+            textAlign: TextAlign.center,
+            inactiveColor: Colors.white,
+          ),
+          BottomNavyBarItem(
+            icon: Icon(Icons.percent),
+            title: const Text('Offers'),
+            activeColor: const Color(0xFFF1BCEF),
+            textAlign: TextAlign.center,
+            inactiveColor: Colors.white,
+          ),
+          BottomNavyBarItem(
+            icon: const Icon(Icons.menu_book_sharp),
+            title: Text('Learn More'),
+            activeColor: const Color(0xFFF1BCEF),
+            textAlign: TextAlign.center,
+            inactiveColor: Colors.white,
+          ),
+        ],
+      ),
       backgroundColor: Colors.black,
       body: SafeArea(
         child: SingleChildScrollView(
@@ -82,7 +134,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 shape: BoxShape.circle,
                               ),
                               child: Image.asset(
-                                'assets/images/new profile.png',
+                                'assets/images/profile_image.png',
                               ),
                             ),
                           ),
@@ -144,7 +196,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
               // -------------------------------------------------------------------------
 
               Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(10, 20, 10, 0),
+                padding: const EdgeInsetsDirectional.fromSTEB(10, 20, 10, 0),
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -1115,8 +1167,6 @@ class _HomePageWidgetState extends State<HomePageWidget>
                   ),
                 ),
               ),
-
-//moew code here
             ],
           ),
         ),
