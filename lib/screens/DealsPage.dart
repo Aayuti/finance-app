@@ -9,11 +9,11 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
 import '../models/deals_page_model.dart';
 export '../models/deals_page_model.dart';
-import '../themes/text_theme.dart' as textTheme;
 
 class OffersWidget extends StatefulWidget {
   const OffersWidget({super.key});
@@ -26,15 +26,58 @@ class _OffersWidgetState extends State<OffersWidget> {
   late OffersModel _model;
   Color _containerColor = const Color(0xFFF1CBEF); // Initial color
   final scaffoldKey = GlobalKey<ScaffoldState>();
+  final Uri _urlApple = Uri.parse('https://support.apple.com/en-in/106008');
+  final Uri _urlSpotify = Uri.parse('https://www.spotify.com/in-en/student/');
+  final Uri _urlSamsung = Uri.parse(
+      'https://www.samsung.com/in/web/b2b-login/campus/?redirect_url=https%3A%2F%2Fwww.samsung.com%2Fin%2Fmultistore%2Fcampus%2Foffer%2F');
+  final Uri _urlGit = Uri.parse(
+      'https://education.github.com/pack#:~:text=Offers-,Offer,on%20any%20subscription%20they%20pick!');
+  final Uri _urlLenovo = Uri.parse(
+      'https://www.myunidays.com/IN/en-IN/partners/lenovo3000/micro/online?IPromoID=LEN503472');
+  final Uri _urlMicrosoft = Uri.parse(
+      'https://www.microsoft.com/en-us/store/b/special-discount-terms?ICID=EDU_CC1R1_Save10_FY24HOL');
+  final Uri _urlZomato = Uri.parse('https://zomato.worthepenny.com/coupon/');
 
-  void _changeColor() {
-    setState(() {
-      print('function called');
-      _containerColor = _containerColor == const Color(0xFFF1CBEF)
-          ? const Color(0xE8955196)
-          : const Color(0xFFF1CBEF); // Change color on tap
-      print('action complete');
-    });
+  Future<void> _launchApple() async {
+    if (!await launchUrl(_urlApple)) {
+      throw Exception('Could not launch $_urlApple');
+    }
+  }
+
+  Future<void> _launchSpotify() async {
+    if (!await launchUrl(_urlSpotify)) {
+      throw Exception('Could not launch $_urlSpotify');
+    }
+  }
+
+  Future<void> _launchSamsung() async {
+    if (!await launchUrl(_urlSamsung)) {
+      throw Exception('Could not launch $_urlSamsung');
+    }
+  }
+
+  Future<void> _launchGit() async {
+    if (!await launchUrl(_urlGit)) {
+      throw Exception('Could not launch $_urlGit');
+    }
+  }
+
+  Future<void> _launchLenovo() async {
+    if (!await launchUrl(_urlLenovo)) {
+      throw Exception('Could not launch $_urlLenovo');
+    }
+  }
+
+  Future<void> _launchMicrosoft() async {
+    if (!await launchUrl(_urlMicrosoft)) {
+      throw Exception('Could not launch $_urlMicrosoft');
+    }
+  }
+
+  Future<void> _launchZomato() async {
+    if (!await launchUrl(_urlZomato)) {
+      throw Exception('Could not launch $_urlZomato');
+    }
   }
 
   @override
@@ -51,15 +94,6 @@ class _OffersWidgetState extends State<OffersWidget> {
 
   @override
   Widget build(BuildContext context) {
-    // if (isiOS) {
-    //   SystemChrome.setSystemUIOverlayStyle(
-    //     SystemUiOverlayStyle(
-    //       statusBarBrightness: Theme.of(context).brightness,
-    //       systemStatusBarContrastEnforced: true,
-    //     ),
-    //   );
-    // }
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -117,10 +151,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                   scrollDirection: Axis.vertical,
                   children: [
                     GestureDetector(
-                      onTap: () {
-                        _changeColor();
-                        print('card clicked');
-                      },
+                      onTap: _launchApple,
                       child: Padding(
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 15),
@@ -158,7 +189,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                                       topLeft: Radius.circular(30),
                                       topRight: Radius.circular(30),
                                     ),
-                                    child: Image.network(
+                                    child: Image.asset(
                                       'assets/images/apple.png',
                                       width: 80,
                                       height: 80,
@@ -211,11 +242,11 @@ class _OffersWidgetState extends State<OffersWidget> {
                                   children: [
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 5, 2, 58),
+                                          0, 5, 2, 48),
                                       child: Icon(
                                         Icons.chevron_right_rounded,
                                         color: Color(0xFF57636C),
-                                        size: 24,
+                                        size: 34,
                                       ),
                                     ),
                                   ],
@@ -227,9 +258,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () {
-                        print('second card clicked');
-                      },
+                      onTap: _launchSpotify,
                       child: Padding(
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 15),
@@ -267,7 +296,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                                       topLeft: Radius.circular(30),
                                       topRight: Radius.circular(30),
                                     ),
-                                    child: Image.network(
+                                    child: Image.asset(
                                       'assets/images/spotify.png',
                                       width: 80,
                                       height: 80,
@@ -322,11 +351,11 @@ class _OffersWidgetState extends State<OffersWidget> {
                                   children: [
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 5, 2, 58),
+                                          0, 5, 2, 48),
                                       child: Icon(
                                         Icons.chevron_right_rounded,
                                         color: Color(0xFF57636C),
-                                        size: 24,
+                                        size: 34,
                                       ),
                                     ),
                                   ],
@@ -338,9 +367,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () {
-                        print('third card clicked');
-                      },
+                      onTap: _launchSamsung,
                       child: Padding(
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 15),
@@ -378,7 +405,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                                       topLeft: Radius.circular(30),
                                       topRight: Radius.circular(30),
                                     ),
-                                    child: Image.network(
+                                    child: Image.asset(
                                       'assets/images/samsung.png',
                                       width: 80,
                                       height: 80,
@@ -406,17 +433,19 @@ class _OffersWidgetState extends State<OffersWidget> {
                                             overflow: TextOverflow.ellipsis,
                                           ),
                                         ),
-                                        Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 4, 8, 0),
-                                          child: AutoSizeText(
-                                            'Get services at discounted prices', // Replace 'Subtext' with your desired text
-                                            textAlign: TextAlign.start,
-                                            style: TextStyle(
-                                              fontFamily: 'Poppins',
-                                              color: Color(
-                                                  0xFF181818), // Assuming 'alternate' color corresponds to accentColor
+                                        Expanded(
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsetsDirectional.fromSTEB(
+                                                    0, 4, 8, 0),
+                                            child: AutoSizeText(
+                                              'Get services at discounted prices', // Replace 'Subtext' with your desired text
+                                              textAlign: TextAlign.start,
+                                              style: TextStyle(
+                                                fontFamily: 'Poppins',
+                                                color: Color(
+                                                    0xFF181818), // Assuming 'alternate' color corresponds to accentColor
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -432,11 +461,11 @@ class _OffersWidgetState extends State<OffersWidget> {
                                   children: [
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 5, 2, 58),
+                                          0, 5, 2, 48),
                                       child: Icon(
                                         Icons.chevron_right_rounded,
                                         color: Color(0xFF57636C),
-                                        size: 24,
+                                        size: 34,
                                       ),
                                     ),
                                   ],
@@ -448,9 +477,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () {
-                        print('fourth card clicked');
-                      },
+                      onTap: _launchGit,
                       child: Padding(
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 15),
@@ -488,7 +515,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                                       topLeft: Radius.circular(30),
                                       topRight: Radius.circular(30),
                                     ),
-                                    child: Image.network(
+                                    child: Image.asset(
                                       'assets/images/github.png',
                                       width: 80,
                                       height: 80,
@@ -517,17 +544,19 @@ class _OffersWidgetState extends State<OffersWidget> {
                                             overflow: TextOverflow.ellipsis,
                                           ),
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsetsDirectional
-                                              .fromSTEB(0, 4, 8, 0),
-                                          child: AutoSizeText(
-                                            'Get servies at discounted prices!', // Replace 'Subtext' with your desired text
-                                            textAlign: TextAlign.start,
-                                            style: TextStyle(
-                                              fontFamily: 'Poppins',
-                                              color: Theme.of(context)
-                                                  .colorScheme
-                                                  .secondary, // Assuming 'alternate' color corresponds to accentColor
+                                        Expanded(
+                                          child: Padding(
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(0, 4, 8, 0),
+                                            child: AutoSizeText(
+                                              'Get servies at discounted prices!', // Replace 'Subtext' with your desired text
+                                              textAlign: TextAlign.start,
+                                              style: TextStyle(
+                                                fontFamily: 'Poppins',
+                                                color: Theme.of(context)
+                                                    .colorScheme
+                                                    .secondary, // Assuming 'alternate' color corresponds to accentColor
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -543,11 +572,11 @@ class _OffersWidgetState extends State<OffersWidget> {
                                   children: [
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 5, 2, 58),
+                                          0, 5, 2, 48),
                                       child: Icon(
                                         Icons.chevron_right_rounded,
                                         color: Color(0xFF57636C),
-                                        size: 24,
+                                        size: 34,
                                       ),
                                     ),
                                   ],
@@ -559,9 +588,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () {
-                        print('fifth card clicked');
-                      },
+                      onTap: _launchLenovo,
                       child: Padding(
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 15),
@@ -599,7 +626,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                                       topLeft: Radius.circular(30),
                                       topRight: Radius.circular(30),
                                     ),
-                                    child: Image.network(
+                                    child: Image.asset(
                                       'assets/images/lenovo.png',
                                       width: 80,
                                       height: 80,
@@ -628,17 +655,19 @@ class _OffersWidgetState extends State<OffersWidget> {
                                             overflow: TextOverflow.ellipsis,
                                           ),
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsetsDirectional
-                                              .fromSTEB(0, 4, 8, 0),
-                                          child: AutoSizeText(
-                                            'Get servies at discounted prices!', // Replace 'Subtext' with your desired text
-                                            textAlign: TextAlign.start,
-                                            style: TextStyle(
-                                              fontFamily: 'Poppins',
-                                              color: Theme.of(context)
-                                                  .colorScheme
-                                                  .secondary, // Assuming 'alternate' color corresponds to accentColor
+                                        Expanded(
+                                          child: Padding(
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(0, 4, 8, 0),
+                                            child: AutoSizeText(
+                                              'Get servies at discounted prices!', // Replace 'Subtext' with your desired text
+                                              textAlign: TextAlign.start,
+                                              style: TextStyle(
+                                                fontFamily: 'Poppins',
+                                                color: Theme.of(context)
+                                                    .colorScheme
+                                                    .secondary, // Assuming 'alternate' color corresponds to accentColor
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -654,11 +683,11 @@ class _OffersWidgetState extends State<OffersWidget> {
                                   children: [
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 5, 2, 58),
+                                          0, 5, 2, 48),
                                       child: Icon(
                                         Icons.chevron_right_rounded,
                                         color: Color(0xFF57636C),
-                                        size: 24,
+                                        size: 34,
                                       ),
                                     ),
                                   ],
@@ -670,9 +699,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () {
-                        print('sixth card clicked');
-                      },
+                      onTap: _launchMicrosoft,
                       child: Padding(
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 15),
@@ -710,7 +737,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                                       topLeft: Radius.circular(30),
                                       topRight: Radius.circular(30),
                                     ),
-                                    child: Image.network(
+                                    child: Image.asset(
                                       'assets/images/microsoft.png',
                                       width: 80,
                                       height: 80,
@@ -739,17 +766,19 @@ class _OffersWidgetState extends State<OffersWidget> {
                                             overflow: TextOverflow.ellipsis,
                                           ),
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsetsDirectional
-                                              .fromSTEB(0, 4, 8, 0),
-                                          child: AutoSizeText(
-                                            'Get servies at discounted prices!', // Replace 'Subtext' with your desired text
-                                            textAlign: TextAlign.start,
-                                            style: TextStyle(
-                                              fontFamily: 'Poppins',
-                                              color: Theme.of(context)
-                                                  .colorScheme
-                                                  .secondary, // Assuming 'alternate' color corresponds to accentColor
+                                        Expanded(
+                                          child: Padding(
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(0, 4, 8, 0),
+                                            child: AutoSizeText(
+                                              'Get servies at discounted prices!', // Replace 'Subtext' with your desired text
+                                              textAlign: TextAlign.start,
+                                              style: TextStyle(
+                                                fontFamily: 'Poppins',
+                                                color: Theme.of(context)
+                                                    .colorScheme
+                                                    .secondary, // Assuming 'alternate' color corresponds to accentColor
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -765,11 +794,11 @@ class _OffersWidgetState extends State<OffersWidget> {
                                   children: [
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 5, 2, 58),
+                                          0, 5, 2, 48),
                                       child: Icon(
                                         Icons.chevron_right_rounded,
                                         color: Color(0xFF57636C),
-                                        size: 24,
+                                        size: 34,
                                       ),
                                     ),
                                   ],
@@ -781,9 +810,7 @@ class _OffersWidgetState extends State<OffersWidget> {
                       ),
                     ),
                     GestureDetector(
-                      onTap: () {
-                        print('seventh card clicked');
-                      },
+                      onTap: _launchZomato,
                       child: Padding(
                         padding:
                             const EdgeInsetsDirectional.fromSTEB(16, 0, 16, 15),
@@ -821,8 +848,8 @@ class _OffersWidgetState extends State<OffersWidget> {
                                       topLeft: Radius.circular(30),
                                       topRight: Radius.circular(30),
                                     ),
-                                    child: Image.network(
-                                      'assets/images/food.png',
+                                    child: Image.asset(
+                                      'assets/images/zomato.png',
                                       width: 80,
                                       height: 80,
                                       fit: BoxFit.cover,
@@ -850,17 +877,19 @@ class _OffersWidgetState extends State<OffersWidget> {
                                             overflow: TextOverflow.ellipsis,
                                           ),
                                         ),
-                                        Padding(
-                                          padding: const EdgeInsetsDirectional
-                                              .fromSTEB(0, 4, 8, 0),
-                                          child: AutoSizeText(
-                                            'Subtext', // Replace 'Subtext' with your desired text
-                                            textAlign: TextAlign.start,
-                                            style: TextStyle(
-                                              fontFamily: 'Poppins',
-                                              color: Theme.of(context)
-                                                  .colorScheme
-                                                  .secondary, // Assuming 'alternate' color corresponds to accentColor
+                                        Expanded(
+                                          child: Padding(
+                                            padding: const EdgeInsetsDirectional
+                                                .fromSTEB(0, 4, 8, 0),
+                                            child: AutoSizeText(
+                                              'Get food at discounted prices', // Replace 'Subtext' with your desired text
+                                              textAlign: TextAlign.start,
+                                              style: TextStyle(
+                                                fontFamily: 'Poppins',
+                                                color: Theme.of(context)
+                                                    .colorScheme
+                                                    .secondary, // Assuming 'alternate' color corresponds to accentColor
+                                              ),
                                             ),
                                           ),
                                         ),
@@ -876,11 +905,11 @@ class _OffersWidgetState extends State<OffersWidget> {
                                   children: [
                                     Padding(
                                       padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 5, 0, 58),
+                                          0, 5, 0, 48),
                                       child: Icon(
                                         Icons.chevron_right_rounded,
                                         color: Color(0xFF57636C),
-                                        size: 24,
+                                        size: 34,
                                       ),
                                     ),
                                   ],

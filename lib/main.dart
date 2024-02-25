@@ -1,6 +1,8 @@
 import 'package:finance_app/Auth/loginAuth.dart';
 import 'package:finance_app/firebase_options.dart';
 import 'package:finance_app/screens/DealsPage.dart';
+import 'package:finance_app/screens/DefaultPage.dart';
+import 'package:finance_app/screens/Graph.dart';
 import 'package:finance_app/screens/HomePage.dart';
 import 'package:finance_app/screens/LearnMore.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -25,7 +27,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: HomePageWidget(),
+      home: DefaultPage(),
     );
   }
 }

@@ -48,6 +48,8 @@ dependencies:
   animations: ^2.0.11
   firebase_auth: ^4.17.4
   bottom_navy_bar: ^6.0.0
+  fl_chart: ^0.63.0
+  flutter_riverpod: ^2.4.10
 
 dev_dependencies:
   flutter_test:
@@ -80,6 +82,7 @@ flutter:
     - assets\images\lenovo.png
     - assets\images\microsoft.png
     - assets\images\profile_image.png
+    - assets\images\zomato.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -1,7 +1,3 @@
-// import '/flutter_flow/flutter_flow_animations.dart';
-// import '/flutter_flow/flutter_flow_theme.dart';
-// import '/flutter_flow/flutter_flow_util.dart';
-// import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter/services.dart';
@@ -10,6 +6,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:animations/animations.dart';
 import 'package:finance_app/styles/AnimationInfo.dart';
 import 'package:finance_app/styles/app_style.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 import '../models/learn_more_page.dart';
 export '../models/learn_more_page.dart';
@@ -24,6 +21,15 @@ class LearnMoreWidget extends StatefulWidget {
 class _LearnMoreWidgetState extends State<LearnMoreWidget>
     with TickerProviderStateMixin {
   late LearnMoreModel _model;
+
+  final Uri _urlcard1 = Uri.parse(
+      'https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-1');
+
+  Future<void> _launchcard1() async {
+    if (!await launchUrl(_urlcard1)) {
+      throw Exception('Could not launch $_urlcard1');
+    }
+  }
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -280,15 +286,6 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
 
   @override
   Widget build(BuildContext context) {
-    // if (isiOS) {
-    //   SystemChrome.setSystemUIOverlayStyle(
-    //     SystemUiOverlayStyle(
-    //       statusBarBrightness: Theme.of(context).brightness,
-    //       systemStatusBarContrastEnforced: true,
-    //     ),
-    //   );
-    // }
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -349,7 +346,7 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0, 16, 10, 0),
                             child: GestureDetector(
-                              onTap: () => print('Card 1 was clicked'),
+                              onTap: _launchcard1,
                               child: Container(
                                 width: 120,
                                 height: 110,
@@ -367,7 +364,7 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                                 child: const Align(
                                   alignment: AlignmentDirectional(0, 0),
                                   child: Text(
-                                    'Expenses',
+                                    'Mutual Funds',
                                     style: TextStyle(
                                       fontFamily: 'Lexend',
                                       color: Color(0xFF181818),
@@ -403,7 +400,7 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                                 child: const Align(
                                   alignment: AlignmentDirectional(0, 0),
                                   child: Text(
-                                    'Expenses',
+                                    'Credit Score',
                                     style: TextStyle(
                                       fontFamily: 'Lexend',
                                       color: Color(0xFF181818),
@@ -436,7 +433,7 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                                 child: const Align(
                                   alignment: AlignmentDirectional(0, 0),
                                   child: Text(
-                                    'Expenses',
+                                    'Personal Loan',
                                     style: TextStyle(
                                       fontFamily: 'Lexend',
                                       color: Color(0xFF181818),
@@ -469,7 +466,7 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                                 child: const Align(
                                   alignment: AlignmentDirectional(0, 0),
                                   child: Text(
-                                    'Expenses',
+                                    'Insurance',
                                     style: TextStyle(
                                       fontFamily: 'Lexend',
                                       color: Color(0xFF181818),
@@ -526,7 +523,7 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                                 child: const Align(
                                   alignment: AlignmentDirectional(0, 0),
                                   child: Text(
-                                    'Expenses',
+                                    'Basics',
                                     style: TextStyle(
                                       fontFamily: 'Lexend',
                                       color: Color(0xFF181818),
@@ -557,7 +554,7 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                               child: const Align(
                                 alignment: AlignmentDirectional(0, 0),
                                 child: Text(
-                                  'Expenses',
+                                  'Budgeting',
                                   style: TextStyle(
                                     fontFamily: 'Lexend',
                                     color: Color(0xFF181818),
@@ -587,7 +584,7 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                               child: const Align(
                                 alignment: AlignmentDirectional(0, 0),
                                 child: Text(
-                                  'Expenses',
+                                  'Gold Investment',
                                   style: TextStyle(
                                     fontFamily: 'Lexend',
                                     color: Color(0xFF181818),
@@ -617,7 +614,7 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                               child: const Align(
                                 alignment: AlignmentDirectional(0, 0),
                                 child: Text(
-                                  'Expenses',
+                                  'Improve Credit score',
                                   style: TextStyle(
                                     fontFamily: 'Lexend',
                                     color: Color(0xFF181818),
@@ -634,7 +631,7 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                   const Padding(
                     padding: EdgeInsetsDirectional.fromSTEB(0, 20, 0, 5),
                     child: Text(
-                      'Finance Basics',
+                      'FinTech',
                       style: TextStyle(
                         fontFamily: 'Poppins',
                         fontSize: 18,
@@ -671,7 +668,39 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                                 child: const Align(
                                   alignment: AlignmentDirectional(0, 0),
                                   child: Text(
-                                    'Expenses',
+                                    'Future of Finance',
+                                    style: TextStyle(
+                                      fontFamily: 'Lexend',
+                                      color: Color(0xFF181818),
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0, 16, 10, 0),
+                            child: Container(
+                              width: 120,
+                              height: 110,
+                              constraints: const BoxConstraints(
+                                maxWidth: 500,
+                              ),
+                              decoration: BoxDecoration(
+                                color: AppStyle.componentColor,
+                                borderRadius: BorderRadius.circular(12),
+                                border: Border.all(
+                                  color: AppStyle.componentColor,
+                                  width: 2,
+                                ),
+                              ),
+                              child: const Align(
+                                alignment: AlignmentDirectional(0, 0),
+                                child: Center(
+                                  child: Text(
+                                    'Supply Chain',
                                     style: TextStyle(
                                       fontFamily: 'Lexend',
                                       color: Color(0xFF181818),
@@ -702,7 +731,7 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                               child: const Align(
                                 alignment: AlignmentDirectional(0, 0),
                                 child: Text(
-                                  'Expenses',
+                                  'Blockchain',
                                   style: TextStyle(
                                     fontFamily: 'Lexend',
                                     color: Color(0xFF181818),
@@ -714,7 +743,7 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                           ),
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
-                                0, 16, 10, 0),
+                                1, 16, 10, 0),
                             child: Container(
                               width: 120,
                               height: 110,
@@ -732,37 +761,7 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                               child: const Align(
                                 alignment: AlignmentDirectional(0, 0),
                                 child: Text(
-                                  'Expenses',
-                                  style: TextStyle(
-                                    fontFamily: 'Lexend',
-                                    color: Color(0xFF181818),
-                                    fontWeight: FontWeight.w500,
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0, 16, 10, 0),
-                            child: Container(
-                              width: 120,
-                              height: 110,
-                              constraints: const BoxConstraints(
-                                maxWidth: 500,
-                              ),
-                              decoration: BoxDecoration(
-                                color: AppStyle.componentColor,
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(
-                                  color: AppStyle.componentColor,
-                                  width: 2,
-                                ),
-                              ),
-                              child: const Align(
-                                alignment: AlignmentDirectional(0, 0),
-                                child: Text(
-                                  'Expenses',
+                                  'RegTech',
                                   style: TextStyle(
                                     fontFamily: 'Lexend',
                                     color: Color(0xFF181818),

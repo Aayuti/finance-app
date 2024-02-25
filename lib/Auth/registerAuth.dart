@@ -1,39 +1,86 @@
-// import '/auth/firebase_auth/auth_util.dart';
+import '/auth/firebase_auth/auth_util.dart';
+import '/backend/backend.dart';
+// import '/flutter_flow/flutter_flow_animations.dart';
 // import '/flutter_flow/flutter_flow_theme.dart';
 // import '/flutter_flow/flutter_flow_util.dart';
 // import '/flutter_flow/flutter_flow_widgets.dart';
-import 'package:finance_app/models/register_page_model.dart';
+// import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:flutter/scheduler.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
-import '../Auth/registerAuth.dart';
-export '../Auth/registerAuth.dart';
+import 'register_account_model.dart';
+export 'register_account_model.dart';
 
-class LoginPageWidget extends StatefulWidget {
-  const LoginPageWidget({super.key});
+class RegisterAccountWidget extends StatefulWidget {
+  const RegisterAccountWidget({super.key});
 
   @override
-  State<LoginPageWidget> createState() => _LoginPageWidgetState();
+  State<RegisterAccountWidget> createState() => _RegisterAccountWidgetState();
 }
 
-class _LoginPageWidgetState extends State<LoginPageWidget> {
-  late RegistrationModel _model;
+class _RegisterAccountWidgetState extends State<RegisterAccountWidget>
+    with TickerProviderStateMixin {
+  late RegisterAccountModel _model;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
+
+  final animationsMap = {
+    'containerOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(0, 0),
+          end: Offset(0, 0),
+        ),
+      ],
+    ),
+    'textFieldOnPageLoadAnimation': AnimationInfo(
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(0, 0),
+          end: Offset(0, 0),
+        ),
+      ],
+    ),
+    'buttonOnPageLoadAnimation': AnimationInfo(
+      reverse: true,
+      trigger: AnimationTrigger.onPageLoad,
+      effects: [
+        MoveEffect(
+          curve: Curves.easeInOut,
+          delay: 0.ms,
+          duration: 600.ms,
+          begin: Offset(0, 0),
+          end: Offset(0, 0),
+        ),
+      ],
+    ),
+  };
 
   @override
   void initState() {
     super.initState();
-    _model = createModel(context, () => RegistrationModel());
+    _model = createModel(context, () => RegisterAccountModel());
 
-    _model.emailAddressLoginController ??= TextEditingController();
-    _model.emailAddressLoginFocusNode ??= FocusNode();
+    _model.emailAddressController ??= TextEditingController();
+    _model.emailAddressFocusNode ??= FocusNode();
 
-    _model.passwordLoginController ??= TextEditingController();
-    _model.passwordLoginFocusNode ??= FocusNode();
+    _model.passwordCreateController ??= TextEditingController();
+    _model.passwordCreateFocusNode ??= FocusNode();
+
+    _model.passwordConfirmController ??= TextEditingController();
+    _model.passwordConfirmFocusNode ??= FocusNode();
   }
 
   @override
@@ -45,116 +92,77 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
 
   @override
   Widget build(BuildContext context) {
-    // if (isiOS) {
-    //   SystemChrome.setSystemUIOverlayStyle(
-    //     SystemUiOverlayStyle(
-    //       statusBarBrightness: Theme.of(context).brightness,
-    //       systemStatusBarContrastEnforced: true,
-    //     ),
-    //   );
-    // }
-
     return Scaffold(
       key: scaffoldKey,
-      backgroundColor: const Color(0xFF181818),
+      backgroundColor: Theme.of(context).primaryColor,
       body: Column(
         mainAxisSize: MainAxisSize.max,
         children: [
           Row(
             mainAxisSize: MainAxisSize.max,
             children: [
-              InkWell(
-                splashColor: Colors.transparent,
-                focusColor: Colors.transparent,
-                hoverColor: Colors.transparent,
-                highlightColor: Colors.transparent,
-                // onTap: () async {
-                //   var confirmDialogResponse = await showDialog<bool>(
-                //         context: context,
-                //         builder: (alertDialogContext) {
-                //           return AlertDialog(
-                //             title: Text('Alert'),
-                //             content: Text('Alert'),
-                //             actions: [
-                //               TextButton(
-                //                 onPressed: () =>
-                //                     Navigator.pop(alertDialogContext, false),
-                //                 child: Text('Cancel'),
-                //               ),
-                //               TextButton(
-                //                 onPressed: () =>
-                //                     Navigator.pop(alertDialogContext, true),
-                //                 child: Text('Confirm'),
-                //               ),
-                //             ],
-                //           );
-                //         },
-                //       ) ??
-                //       false;
-                // },
-                child: Container(
-                  width: MediaQuery.sizeOf(context).width,
-                  height: MediaQuery.sizeOf(context).height * 1,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.fitWidth,
-                      image: Image.asset(
-                        'assets/images/login_bg@2x.png',
-                      ).image,
-                    ),
+              Container(
+                width: MediaQuery.sizeOf(context).width,
+                height: MediaQuery.sizeOf(context).height * 1,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    fit: BoxFit.fitWidth,
+                    image: Image.asset(
+                      'assets/images/createAccount_bg@2x.png',
+                    ).image,
                   ),
-                  child: Padding(
-                    padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Padding(
-                          padding:
-                              EdgeInsetsDirectional.fromSTEB(24, 24, 0, 20),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              if (!(Theme.of(context).brightness ==
-                                  Brightness.dark))
-                                Image.asset(
-                                  'assets/images/finWallet_logo_landscapeDark@3x.png',
-                                  width: 170,
-                                  height: 60,
-                                  fit: BoxFit.fitWidth,
-                                ),
-                            ],
-                          ),
+                ),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.max,
+                    children: [
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(24, 24, 0, 20),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: [
+                            if (!(Theme.of(context).brightness ==
+                                Brightness.dark))
+                              Image.asset(
+                                'assets/images/finWallet_logo_landscapeDark@3x.png',
+                                width: 170,
+                                height: 60,
+                                fit: BoxFit.fitWidth,
+                              ),
+                            if (Theme.of(context).brightness == Brightness.dark)
+                              Image.asset(
+                                'assets/images/finWallet_logo_landscape.png',
+                                width: 193,
+                                height: 60,
+                                fit: BoxFit.fitWidth,
+                              ),
+                          ],
                         ),
-                        Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
-                              24, 0, 24, 0),
+                      ),
+                      Padding(
+                        padding: EdgeInsetsDirectional.fromSTEB(24, 0, 24, 0),
+                        child: InkWell(
+                          splashColor: Colors.transparent,
+                          focusColor: Colors.transparent,
+                          hoverColor: Colors.transparent,
+                          highlightColor: Colors.transparent,
+                          onTap: () async {},
                           child: SingleChildScrollView(
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
+                              crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
-                                const Row(
+                                Row(
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
-                                    Flexible(
-                                      child: Align(
-                                        alignment: AlignmentDirectional(0, -1),
-                                        child: Padding(
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 0, 50),
-                                          child: Text(
-                                            'Welcome', // Replace 'Welcome' with the actual translation string
-                                            textAlign: TextAlign.center,
-                                            style: TextStyle(
-                                              fontFamily: 'Poppins',
-                                              color: Colors.black,
-                                              letterSpacing: 3,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          ),
-                                        ),
+                                    Text(
+                                      FFLocalizations.of(context).getText(
+                                        'gpokmd81' /* Get Started */,
                                       ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .displaySmall,
                                     ),
                                   ],
                                 ),
@@ -164,31 +172,12 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                   child: Row(
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
-                                      Flexible(
-                                        child: Align(
-                                          alignment:
-                                              const AlignmentDirectional(0, 0),
-                                          child: Padding(
-                                            padding: const EdgeInsetsDirectional
-                                                .fromSTEB(0, 0, 0, 20),
-                                            child: Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'fzxvw3mu' /* Login to access your account b... */,
-                                              ),
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .titleMedium
-                                                      .override(
-                                                        fontFamily: 'Lexend',
-                                                        color:
-                                                            FlutterFlowTheme.of(
-                                                                    context)
-                                                                .primaryText,
-                                                      ),
-                                            ),
-                                          ),
+                                      Text(
+                                        FFLocalizations.of(context).getText(
+                                          'oitrrwgg' /* Create your account below. */,
                                         ),
+                                        style: FlutterFlowTheme.of(context)
+                                            .titleMedium,
                                       ),
                                     ],
                                   ),
@@ -197,21 +186,19 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 20, 0, 0),
                                   child: TextFormField(
-                                    controller:
-                                        _model.emailAddressLoginController,
-                                    focusNode:
-                                        _model.emailAddressLoginFocusNode,
+                                    controller: _model.emailAddressController,
+                                    focusNode: _model.emailAddressFocusNode,
                                     obscureText: false,
                                     decoration: InputDecoration(
                                       labelText:
                                           FFLocalizations.of(context).getText(
-                                        'a9j78va9' /* Email */,
+                                        'gcwdqm4g' /* Email Address */,
                                       ),
                                       labelStyle: FlutterFlowTheme.of(context)
                                           .bodySmall,
                                       hintText:
                                           FFLocalizations.of(context).getText(
-                                        'i7f18cve' /* Enter your email... */,
+                                        'iam0xgwx' /* Enter your email... */,
                                       ),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .bodySmall,
@@ -253,7 +240,7 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                     style:
                                         FlutterFlowTheme.of(context).bodyMedium,
                                     validator: _model
-                                        .emailAddressLoginControllerValidator
+                                        .emailAddressControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
@@ -261,20 +248,20 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                   padding: EdgeInsetsDirectional.fromSTEB(
                                       0, 12, 0, 0),
                                   child: TextFormField(
-                                    controller: _model.passwordLoginController,
-                                    focusNode: _model.passwordLoginFocusNode,
+                                    controller: _model.passwordCreateController,
+                                    focusNode: _model.passwordCreateFocusNode,
+                                    textInputAction: TextInputAction.done,
                                     obscureText:
-                                        !_model.passwordLoginVisibility,
+                                        !_model.passwordCreateVisibility,
                                     decoration: InputDecoration(
                                       labelText:
                                           FFLocalizations.of(context).getText(
-                                        'wztjmbn8' /* Password */,
+                                        'bqv15dcf' /* Password */,
                                       ),
-                                      labelStyle: FlutterFlowTheme.of(context)
-                                          .bodySmall,
+                                      alignLabelWithHint: true,
                                       hintText:
                                           FFLocalizations.of(context).getText(
-                                        'lw1jpm1f' /* Enter your password... */,
+                                        'joih97mn' /* Enter your password... */,
                                       ),
                                       hintStyle: FlutterFlowTheme.of(context)
                                           .bodySmall,
@@ -314,16 +301,101 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                               20, 24, 20, 24),
                                       suffixIcon: InkWell(
                                         onTap: () => setState(
-                                          () => _model.passwordLoginVisibility =
-                                              !_model.passwordLoginVisibility,
+                                          () => _model
+                                                  .passwordCreateVisibility =
+                                              !_model.passwordCreateVisibility,
                                         ),
                                         focusNode:
                                             FocusNode(skipTraversal: true),
                                         child: Icon(
-                                          _model.passwordLoginVisibility
+                                          _model.passwordCreateVisibility
                                               ? Icons.visibility_outlined
                                               : Icons.visibility_off_outlined,
-                                          color: Color(0x98FFFFFF),
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
+                                          size: 20,
+                                        ),
+                                      ),
+                                    ),
+                                    style:
+                                        FlutterFlowTheme.of(context).bodyMedium,
+                                    maxLength: 10,
+                                    validator: _model
+                                        .passwordCreateControllerValidator
+                                        .asValidator(context),
+                                  ).animateOnPageLoad(animationsMap[
+                                      'textFieldOnPageLoadAnimation']!),
+                                ),
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 12, 0, 0),
+                                  child: TextFormField(
+                                    controller:
+                                        _model.passwordConfirmController,
+                                    focusNode: _model.passwordConfirmFocusNode,
+                                    obscureText:
+                                        !_model.passwordConfirmVisibility,
+                                    decoration: InputDecoration(
+                                      labelText:
+                                          FFLocalizations.of(context).getText(
+                                        'rzpiwq9p' /* Confirm Password */,
+                                      ),
+                                      labelStyle: FlutterFlowTheme.of(context)
+                                          .bodySmall,
+                                      hintText:
+                                          FFLocalizations.of(context).getText(
+                                        'eyfkffka' /* Enter your password... */,
+                                      ),
+                                      hintStyle: FlutterFlowTheme.of(context)
+                                          .bodySmall,
+                                      enabledBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 1,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      focusedBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 1,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      errorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 1,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      focusedErrorBorder: OutlineInputBorder(
+                                        borderSide: BorderSide(
+                                          color: Color(0x00000000),
+                                          width: 1,
+                                        ),
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      filled: true,
+                                      fillColor: FlutterFlowTheme.of(context)
+                                          .secondaryBackground,
+                                      contentPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              20, 24, 20, 24),
+                                      suffixIcon: InkWell(
+                                        onTap: () => setState(
+                                          () => _model
+                                                  .passwordConfirmVisibility =
+                                              !_model.passwordConfirmVisibility,
+                                        ),
+                                        focusNode:
+                                            FocusNode(skipTraversal: true),
+                                        child: Icon(
+                                          _model.passwordConfirmVisibility
+                                              ? Icons.visibility_outlined
+                                              : Icons.visibility_off_outlined,
+                                          color: FlutterFlowTheme.of(context)
+                                              .secondaryText,
                                           size: 20,
                                         ),
                                       ),
@@ -331,139 +403,138 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                     style:
                                         FlutterFlowTheme.of(context).bodyMedium,
                                     validator: _model
-                                        .passwordLoginControllerValidator
+                                        .passwordConfirmControllerValidator
                                         .asValidator(context),
                                   ),
                                 ),
-                                Row(
-                                  mainAxisSize: MainAxisSize.max,
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
-                                          0, 24, 0, 24),
-                                      child: FFButtonWidget(
-                                        onPressed: () async {
-                                          context.pushNamed('forgotPassword');
-                                        },
-                                        text:
-                                            FFLocalizations.of(context).getText(
-                                          'm2xyjvuf' /* Forgot Password? */,
-                                        ),
-                                        options: FFButtonOptions(
-                                          width: 170,
-                                          height: 40,
-                                          padding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 0, 0),
-                                          iconPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
-                                                  0, 0, 0, 0),
-                                          color: Color(0x001A1F24),
-                                          textStyle:
-                                              FlutterFlowTheme.of(context)
-                                                  .bodySmall,
-                                          elevation: 0,
-                                          borderSide: BorderSide(
-                                            color: Colors.transparent,
-                                            width: 1,
+                                Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      0, 24, 0, 24),
+                                  child: FFButtonWidget(
+                                    onPressed: () async {
+                                      GoRouter.of(context).prepareAuthEvent();
+                                      final user = await authManager
+                                          .signInWithGoogle(context);
+                                      if (user == null) {
+                                        return;
+                                      }
+
+                                      await RegistrationsDetailsRecord
+                                          .collection
+                                          .doc()
+                                          .set(
+                                              createRegistrationsDetailsRecordData(
+                                            email: '',
+                                            password: '',
+                                          ));
+                                      if (Navigator.of(context).canPop()) {
+                                        context.pop();
+                                      }
+                                      context.pushNamedAuth(
+                                        'loginPage',
+                                        context.mounted,
+                                        extra: <String, dynamic>{
+                                          kTransitionInfoKey: TransitionInfo(
+                                            hasTransition: true,
+                                            transitionType:
+                                                PageTransitionType.rightToLeft,
+                                            duration: Duration(milliseconds: 2),
                                           ),
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                        ),
-                                      ),
+                                        },
+                                      );
+                                    },
+                                    text: FFLocalizations.of(context).getText(
+                                      '5kmjfwsk' /* Create Account */,
                                     ),
-                                    FFButtonWidget(
-                                      onPressed: () async {
-                                        GoRouter.of(context).prepareAuthEvent();
-
-                                        final user =
-                                            await authManager.signInWithEmail(
-                                          context,
-                                          _model
-                                              .emailAddressLoginController.text,
-                                          _model.passwordLoginController.text,
-                                        );
-                                        if (user == null) {
-                                          return;
-                                        }
-
-                                        context.goNamedAuth(
-                                            'MY_Card', context.mounted);
-                                      },
-                                      text: FFLocalizations.of(context).getText(
-                                        'qbmoi1av' /* Login */,
+                                    options: FFButtonOptions(
+                                      width: 160,
+                                      height: 50,
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          0, 0, 0, 0),
+                                      iconPadding:
+                                          EdgeInsetsDirectional.fromSTEB(
+                                              0, 0, 0, 0),
+                                      color:
+                                          FlutterFlowTheme.of(context).primary,
+                                      textStyle: FlutterFlowTheme.of(context)
+                                          .titleSmall
+                                          .override(
+                                            fontFamily: 'Lexend',
+                                            color: FlutterFlowTheme.of(context)
+                                                .primaryBackground,
+                                          ),
+                                      elevation: 3,
+                                      borderSide: BorderSide(
+                                        color: Colors.transparent,
+                                        width: 1,
                                       ),
-                                      options: FFButtonOptions(
-                                        width: 120,
-                                        height: 50,
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            0, 0, 0, 0),
-                                        iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
-                                                0, 0, 0, 0),
-                                        color: Color(0xFFF1CBEF),
-                                        textStyle: FlutterFlowTheme.of(context)
-                                            .titleSmall
-                                            .override(
-                                              fontFamily: 'Lexend',
-                                              color: Color(0xFF181818),
-                                            ),
-                                        elevation: 3,
-                                        borderSide: BorderSide(
-                                          color: Colors.transparent,
-                                          width: 1,
-                                        ),
-                                        borderRadius: BorderRadius.circular(30),
+                                      borderRadius: BorderRadius.circular(30),
+                                      hoverColor: FlutterFlowTheme.of(context)
+                                          .primaryBackground,
+                                      hoverBorderSide: BorderSide(
+                                        color: FlutterFlowTheme.of(context)
+                                            .primary,
+                                        width: 1,
                                       ),
+                                      hoverTextColor:
+                                          FlutterFlowTheme.of(context).primary,
                                     ),
-                                  ],
+                                  ).animateOnPageLoad(animationsMap[
+                                      'buttonOnPageLoadAnimation']!),
                                 ),
                                 Row(
                                   mainAxisSize: MainAxisSize.max,
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    InkWell(
-                                      splashColor: Colors.transparent,
-                                      focusColor: Colors.transparent,
-                                      hoverColor: Colors.transparent,
-                                      highlightColor: Colors.transparent,
-                                      onTap: () async {
-                                        context.pushNamed('registerAccount');
-                                      },
-                                      child: Container(
-                                        width:
-                                            MediaQuery.sizeOf(context).width *
-                                                0.8,
-                                        height: 44,
-                                        decoration: BoxDecoration(
-                                          color: FlutterFlowTheme.of(context)
-                                              .secondaryBackground,
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                        ),
+                                    Container(
+                                      width: MediaQuery.sizeOf(context).width *
+                                          0.8,
+                                      height: 44,
+                                      decoration: BoxDecoration(
+                                        color: FlutterFlowTheme.of(context)
+                                            .secondaryBackground,
+                                        borderRadius: BorderRadius.circular(8),
+                                      ),
+                                      child: InkWell(
+                                        splashColor: Colors.transparent,
+                                        focusColor: Colors.transparent,
+                                        hoverColor: Colors.transparent,
+                                        highlightColor: Colors.transparent,
+                                        onTap: () async {
+                                          context.pushNamed(
+                                            'loginPage',
+                                            extra: <String, dynamic>{
+                                              kTransitionInfoKey:
+                                                  TransitionInfo(
+                                                hasTransition: true,
+                                                transitionType:
+                                                    PageTransitionType
+                                                        .leftToRight,
+                                                duration:
+                                                    Duration(milliseconds: 220),
+                                              ),
+                                            },
+                                          );
+                                        },
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           mainAxisAlignment:
                                               MainAxisAlignment.center,
                                           children: [
-                                            Text(
-                                              FFLocalizations.of(context)
-                                                  .getText(
-                                                'cjqb8ial' /* Don't have an account? */,
-                                              ),
-                                              style:
+                                            Icon(
+                                              Icons.arrow_back_rounded,
+                                              color:
                                                   FlutterFlowTheme.of(context)
-                                                      .bodyMedium,
+                                                      .primary,
+                                              size: 24,
                                             ),
                                             Padding(
                                               padding: EdgeInsetsDirectional
-                                                  .fromSTEB(24, 0, 4, 0),
+                                                  .fromSTEB(4, 0, 24, 0),
                                               child: Text(
                                                 FFLocalizations.of(context)
                                                     .getText(
-                                                  'a0iimirx' /* Create */,
+                                                  '3twynvfz' /* Login */,
                                                 ),
                                                 style:
                                                     FlutterFlowTheme.of(context)
@@ -472,16 +543,18 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                                                           fontFamily: 'Lexend',
                                                           color: FlutterFlowTheme
                                                                   .of(context)
-                                                              .primaryText,
+                                                              .primary,
                                                         ),
                                               ),
                                             ),
-                                            Icon(
-                                              Icons.arrow_forward_rounded,
-                                              color:
+                                            Text(
+                                              FFLocalizations.of(context)
+                                                  .getText(
+                                                '9ssznj0g' /* Already have an account? */,
+                                              ),
+                                              style:
                                                   FlutterFlowTheme.of(context)
-                                                      .primaryText,
-                                              size: 24,
+                                                      .bodyMedium,
                                             ),
                                           ],
                                         ),
@@ -493,23 +566,16 @@ class _LoginPageWidgetState extends State<LoginPageWidget> {
                             ),
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
-              ),
+              ).animateOnPageLoad(
+                  animationsMap['containerOnPageLoadAnimation']!),
             ],
           ),
         ],
       ),
     );
   }
-}
-
-RegistrationModel createModel(
-    BuildContext context, RegistrationModel Function() modelBuilder) {
-  // You can add any logic here before creating the model
-  // For example, you might want to retrieve data from a repository, perform some initialization, etc.
-
-  return modelBuilder(); // Instantiates and returns an OffersModel
 }
