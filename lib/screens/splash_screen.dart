@@ -1,4 +1,5 @@
 import 'package:finance_app/Auth/loginAuth.dart';
+import 'package:finance_app/Auth/registerAuth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'dart:io';
@@ -118,7 +119,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
               Padding(
                 padding: const EdgeInsetsDirectional.fromSTEB(0, 40, 0, 0),
-                child: Image.network(
+                child: Image.asset(
                   'assets/images/Color logo - no background.png',
                   height: 200,
                   width: 200,
@@ -170,10 +171,11 @@ class _SplashScreenState extends State<SplashScreen> {
                 child: InkWell(
                   onTap: () {
                     //No signUp page??
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(builder: (context) => const SignUp()),
-                    // );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const RegisterAccountWidget()),
+                    );
                   },
                   child: const Text(
                     'Sign Up',

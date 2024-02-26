@@ -1,4 +1,5 @@
 import 'package:finance_app/Auth/loginAuth.dart';
+import 'package:finance_app/Auth/registerAuth.dart';
 import 'package:finance_app/firebase_options.dart';
 import 'package:finance_app/screens/DealsPage.dart';
 import 'package:finance_app/screens/DefaultPage.dart';
@@ -25,9 +26,14 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      routes: {
+        // Other routes...
+        './registerAuth': (context) => const RegisterAccountWidget(),
+        './loginAuth': (context) => const LoginScreen(),
+      },
       debugShowCheckedModeBanner: false,
-      home: DefaultPage(),
+      home: const SplashScreen(),
     );
   }
 }

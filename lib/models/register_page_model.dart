@@ -1,42 +1,45 @@
-// import '/auth/firebase_auth/auth_util.dart';
-// import '/flutter_flow/flutter_flow_theme.dart';
-// import '/flutter_flow/flutter_flow_util.dart';
-// import '/flutter_flow/flutter_flow_widgets.dart';
-import '../Auth/registerAuth.dart' show LoginPageWidget;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 
-class RegistrationModel {
-  ///  State fields for stateful widgets in this page.
+class RegisterAccountModel {
+  // State fields for emailAddress widget.
+  FocusNode? emailAddressFocusNode;
+  TextEditingController? emailAddressController;
+  String? Function(BuildContext, String?)? emailAddressControllerValidator;
 
-  // State field(s) for emailAddress-login widget.
-  FocusNode? emailAddressLoginFocusNode;
-  TextEditingController? emailAddressLoginController;
-  String? Function(BuildContext, String?)? emailAddressLoginControllerValidator;
-  // State field(s) for password-login widget.
-  FocusNode? passwordLoginFocusNode;
-  TextEditingController? passwordLoginController;
-  late bool passwordLoginVisibility;
-  String? Function(BuildContext, String?)? passwordLoginControllerValidator;
+  // State fields for password-Create widget.
+  FocusNode? passwordCreateFocusNode;
+  TextEditingController? passwordCreateController;
+  late bool passwordCreateVisibility;
+  String? Function(BuildContext, String?)? passwordCreateControllerValidator;
 
-  /// Initialization and disposal methods.
+  // State fields for passwordConfirm widget.
+  FocusNode? passwordConfirmFocusNode;
+  TextEditingController? passwordConfirmController;
+  late bool passwordConfirmVisibility;
+  String? Function(BuildContext, String?)? passwordConfirmControllerValidator;
 
-  void initState(BuildContext context) {
-    passwordLoginVisibility = false;
+  RegisterAccountModel(BuildContext context) {
+    // Initialize your fields here
+    passwordCreateVisibility = false;
+    passwordConfirmVisibility = false;
+  }
+
+  // Additional initialization and disposal methods can be added here
+
+  void prepareAuthEvent() {
+    // Implement your logic here
+    // This method will be called when authentication is required
   }
 
   void dispose() {
-    emailAddressLoginFocusNode?.dispose();
-    emailAddressLoginController?.dispose();
+    emailAddressFocusNode?.dispose();
+    emailAddressController?.dispose();
 
-    passwordLoginFocusNode?.dispose();
-    passwordLoginController?.dispose();
+    passwordCreateFocusNode?.dispose();
+    passwordCreateController?.dispose();
+
+    passwordConfirmFocusNode?.dispose();
+    passwordConfirmController?.dispose();
   }
 
-  /// Action blocks are added here.
-
-  /// Additional helper methods are added here.
 }

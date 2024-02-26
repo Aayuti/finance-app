@@ -22,12 +22,81 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
     with TickerProviderStateMixin {
   late LearnMoreModel _model;
 
-  final Uri _urlcard1 = Uri.parse(
-      'https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-1');
+  // final Uri _urlcard1 = Uri.parse(
+  //     'https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-1');
 
-  Future<void> _launchcard1() async {
-    if (!await launchUrl(_urlcard1)) {
-      throw Exception('Could not launch $_urlcard1');
+  // Future<void> _launchcard1() async {
+  //   if (!await launchUrl(_urlcard1)) {
+  //     throw Exception('Could not launch $_urlcard1');
+  //   }
+  // }
+
+  // final Uri _urlcard2 = Uri.parse(
+  //     'https://hbr.org/2023/10/how-fintech-is-making-smaller-suppliers-more-resilient');
+
+  // Future<void> _launchcard2() async {
+  //   if (!await launchUrl(_urlcard2)) {
+  //     throw Exception('Could not launch $_urlcard2');
+  //   }
+  // }
+
+  final List<Map<String, String>> cards = [
+    {
+      'text': 'Mutual Funds',
+      'url':
+          'https://www.investor.gov/introduction-investing/investing-basics/investment-products/mutual-funds-and-exchange-traded-1'
+    },
+    {
+      'text': 'Credit Score',
+      'url': 'https://www.investopedia.com/terms/c/credit_score.asp'
+    },
+    {
+      'text': 'Personal Loan',
+      'url': 'https://www.investopedia.com/personal-loan-5076027'
+    },
+    {
+      'text': 'Insurance',
+      'url': 'https://www.investopedia.com/terms/i/insurance.asp'
+    },
+    {'text': 'Basics', 'url': 'https://www.youtube.com/watch?v=qIw-yFC-HNU'},
+    {
+      'text': 'Budgeting',
+      'url':
+          'https://www.nerdwallet.com/article/finance/budgeting-for-college-students'
+    },
+    {
+      'text': 'Gold Investment',
+      'url': 'https://www.cbsnews.com/news/investing-gold-pros-cons/'
+    },
+    {
+      'text': 'Improve Credit Score',
+      'url':
+          'https://www.consumerfinance.gov/ask-cfpb/how-do-i-get-and-keep-a-good-credit-score-en-318/'
+    },
+    {
+      'text': 'Future of Finance',
+      'url':
+          'https://www.worldbank.org/en/publication/fintech-and-the-future-of-finance'
+    },
+    {
+      'text': 'Supply Chain',
+      'url':
+          'https://hbr.org/2023/10/how-fintech-is-making-smaller-suppliers-more-resilient'
+    },
+    {
+      'text': 'Blockchain',
+      'url':
+          'https://www.pwc.com/us/en/industries/financial-services/fintech/bitcoin-blockchain-cryptocurrency.html'
+    },
+    {
+      'text': 'RegTech',
+      'url': 'https://www.ascentregtech.com/what-is-regtech/'
+    },
+  ];
+
+  Future<void> _launchUrl(Uri url) async {
+    if (!await launchUrl(url)) {
+      throw Exception('Could not launch $url');
     }
   }
 
@@ -346,7 +415,8 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0, 16, 10, 0),
                             child: GestureDetector(
-                              onTap: _launchcard1,
+                              onTap: () =>
+                                  _launchUrl(Uri.parse(cards[0]['url']!)),
                               child: Container(
                                 width: 120,
                                 height: 110,
@@ -380,9 +450,8 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0, 16, 10, 0),
                             child: GestureDetector(
-                              onTap: () {
-                                print('Card 2 was clicked');
-                              },
+                              onTap: () =>
+                                  _launchUrl(Uri.parse(cards[1]['url']!)),
                               child: Container(
                                 width: 120,
                                 height: 110,
@@ -412,7 +481,8 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                             ),
                           ),
                           GestureDetector(
-                            onTap: () => print('Card 3 was clicked'),
+                            onTap: () =>
+                                _launchUrl(Uri.parse(cards[2]['url']!)),
                             child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   0, 16, 10, 0),
@@ -445,7 +515,8 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                             ),
                           ),
                           GestureDetector(
-                            onTap: () => print('Card 4 was clicked'),
+                            onTap: () =>
+                                _launchUrl(Uri.parse(cards[3]['url']!)),
                             child: Padding(
                               padding: const EdgeInsetsDirectional.fromSTEB(
                                   0, 16, 10, 0),
@@ -505,7 +576,8 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0, 16, 10, 0),
                             child: GestureDetector(
-                              onTap: () => print('Card 5 was clicked'),
+                              onTap: () =>
+                                  _launchUrl(Uri.parse(cards[4]['url']!)),
                               child: Container(
                                 width: 120,
                                 height: 110,
@@ -537,28 +609,32 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0, 16, 10, 0),
-                            child: Container(
-                              width: 120,
-                              height: 110,
-                              constraints: const BoxConstraints(
-                                maxWidth: 500,
-                              ),
-                              decoration: BoxDecoration(
-                                color: AppStyle.componentColor,
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(
-                                  color: AppStyle.componentColor,
-                                  width: 2,
+                            child: GestureDetector(
+                              onTap: () =>
+                                  _launchUrl(Uri.parse(cards[5]['url']!)),
+                              child: Container(
+                                width: 120,
+                                height: 110,
+                                constraints: const BoxConstraints(
+                                  maxWidth: 500,
                                 ),
-                              ),
-                              child: const Align(
-                                alignment: AlignmentDirectional(0, 0),
-                                child: Text(
-                                  'Budgeting',
-                                  style: TextStyle(
-                                    fontFamily: 'Lexend',
-                                    color: Color(0xFF181818),
-                                    fontWeight: FontWeight.w500,
+                                decoration: BoxDecoration(
+                                  color: AppStyle.componentColor,
+                                  borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(
+                                    color: AppStyle.componentColor,
+                                    width: 2,
+                                  ),
+                                ),
+                                child: const Align(
+                                  alignment: AlignmentDirectional(0, 0),
+                                  child: Text(
+                                    'Budgeting',
+                                    style: TextStyle(
+                                      fontFamily: 'Lexend',
+                                      color: Color(0xFF181818),
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -567,28 +643,32 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0, 16, 10, 0),
-                            child: Container(
-                              width: 120,
-                              height: 110,
-                              constraints: const BoxConstraints(
-                                maxWidth: 500,
-                              ),
-                              decoration: BoxDecoration(
-                                color: AppStyle.componentColor,
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(
-                                  color: AppStyle.componentColor,
-                                  width: 2,
+                            child: GestureDetector(
+                              onTap: () =>
+                                  _launchUrl(Uri.parse(cards[6]['url']!)),
+                              child: Container(
+                                width: 120,
+                                height: 110,
+                                constraints: const BoxConstraints(
+                                  maxWidth: 500,
                                 ),
-                              ),
-                              child: const Align(
-                                alignment: AlignmentDirectional(0, 0),
-                                child: Text(
-                                  'Gold Investment',
-                                  style: TextStyle(
-                                    fontFamily: 'Lexend',
-                                    color: Color(0xFF181818),
-                                    fontWeight: FontWeight.w500,
+                                decoration: BoxDecoration(
+                                  color: AppStyle.componentColor,
+                                  borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(
+                                    color: AppStyle.componentColor,
+                                    width: 2,
+                                  ),
+                                ),
+                                child: const Align(
+                                  alignment: AlignmentDirectional(0, 0),
+                                  child: Text(
+                                    'Gold Investment',
+                                    style: TextStyle(
+                                      fontFamily: 'Lexend',
+                                      color: Color(0xFF181818),
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -597,28 +677,32 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0, 16, 10, 0),
-                            child: Container(
-                              width: 120,
-                              height: 110,
-                              constraints: const BoxConstraints(
-                                maxWidth: 500,
-                              ),
-                              decoration: BoxDecoration(
-                                color: AppStyle.componentColor,
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(
-                                  color: AppStyle.componentColor,
-                                  width: 2,
+                            child: GestureDetector(
+                              onTap: () =>
+                                  _launchUrl(Uri.parse(cards[7]['url']!)),
+                              child: Container(
+                                width: 120,
+                                height: 110,
+                                constraints: const BoxConstraints(
+                                  maxWidth: 500,
                                 ),
-                              ),
-                              child: const Align(
-                                alignment: AlignmentDirectional(0, 0),
-                                child: Text(
-                                  'Improve Credit score',
-                                  style: TextStyle(
-                                    fontFamily: 'Lexend',
-                                    color: Color(0xFF181818),
-                                    fontWeight: FontWeight.w500,
+                                decoration: BoxDecoration(
+                                  color: AppStyle.componentColor,
+                                  borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(
+                                    color: AppStyle.componentColor,
+                                    width: 2,
+                                  ),
+                                ),
+                                child: const Align(
+                                  alignment: AlignmentDirectional(0, 0),
+                                  child: Text(
+                                    'Improve Credit score',
+                                    style: TextStyle(
+                                      fontFamily: 'Lexend',
+                                      color: Color(0xFF181818),
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -650,7 +734,8 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0, 16, 10, 0),
                             child: GestureDetector(
-                              onTap: () => print('Card 9 was clicked'),
+                              onTap: () =>
+                                  _launchUrl(Uri.parse(cards[8]['url']!)),
                               child: Container(
                                 width: 120,
                                 height: 110,
@@ -682,25 +767,63 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0, 16, 10, 0),
-                            child: Container(
-                              width: 120,
-                              height: 110,
-                              constraints: const BoxConstraints(
-                                maxWidth: 500,
-                              ),
-                              decoration: BoxDecoration(
-                                color: AppStyle.componentColor,
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(
+                            child: GestureDetector(
+                              onTap: () =>
+                                  _launchUrl(Uri.parse(cards[9]['url']!)),
+                              child: Container(
+                                width: 120,
+                                height: 110,
+                                constraints: const BoxConstraints(
+                                  maxWidth: 500,
+                                ),
+                                decoration: BoxDecoration(
                                   color: AppStyle.componentColor,
-                                  width: 2,
+                                  borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(
+                                    color: AppStyle.componentColor,
+                                    width: 2,
+                                  ),
+                                ),
+                                child: const Align(
+                                  alignment: AlignmentDirectional(0, 0),
+                                  child: Center(
+                                    child: Text(
+                                      'Supply Chain',
+                                      style: TextStyle(
+                                        fontFamily: 'Lexend',
+                                        color: Color(0xFF181818),
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                  ),
                                 ),
                               ),
-                              child: const Align(
-                                alignment: AlignmentDirectional(0, 0),
-                                child: Center(
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0, 16, 10, 0),
+                            child: GestureDetector(
+                              onTap: () =>
+                                  _launchUrl(Uri.parse(cards[10]['url']!)),
+                              child: Container(
+                                width: 120,
+                                height: 110,
+                                constraints: const BoxConstraints(
+                                  maxWidth: 500,
+                                ),
+                                decoration: BoxDecoration(
+                                  color: AppStyle.componentColor,
+                                  borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(
+                                    color: AppStyle.componentColor,
+                                    width: 2,
+                                  ),
+                                ),
+                                child: const Align(
+                                  alignment: AlignmentDirectional(0, 0),
                                   child: Text(
-                                    'Supply Chain',
+                                    'Blockchain',
                                     style: TextStyle(
                                       fontFamily: 'Lexend',
                                       color: Color(0xFF181818),
@@ -713,59 +836,33 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                           ),
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
-                                0, 16, 10, 0),
-                            child: Container(
-                              width: 120,
-                              height: 110,
-                              constraints: const BoxConstraints(
-                                maxWidth: 500,
-                              ),
-                              decoration: BoxDecoration(
-                                color: AppStyle.componentColor,
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(
-                                  color: AppStyle.componentColor,
-                                  width: 2,
+                                1, 16, 10, 0),
+                            child: GestureDetector(
+                              onTap: () =>
+                                  _launchUrl(Uri.parse(cards[11]['url']!)),
+                              child: Container(
+                                width: 120,
+                                height: 110,
+                                constraints: const BoxConstraints(
+                                  maxWidth: 500,
                                 ),
-                              ),
-                              child: const Align(
-                                alignment: AlignmentDirectional(0, 0),
-                                child: Text(
-                                  'Blockchain',
-                                  style: TextStyle(
-                                    fontFamily: 'Lexend',
-                                    color: Color(0xFF181818),
-                                    fontWeight: FontWeight.w500,
+                                decoration: BoxDecoration(
+                                  color: AppStyle.componentColor,
+                                  borderRadius: BorderRadius.circular(12),
+                                  border: Border.all(
+                                    color: AppStyle.componentColor,
+                                    width: 2,
                                   ),
                                 ),
-                              ),
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                1, 16, 10, 0),
-                            child: Container(
-                              width: 120,
-                              height: 110,
-                              constraints: const BoxConstraints(
-                                maxWidth: 500,
-                              ),
-                              decoration: BoxDecoration(
-                                color: AppStyle.componentColor,
-                                borderRadius: BorderRadius.circular(12),
-                                border: Border.all(
-                                  color: AppStyle.componentColor,
-                                  width: 2,
-                                ),
-                              ),
-                              child: const Align(
-                                alignment: AlignmentDirectional(0, 0),
-                                child: Text(
-                                  'RegTech',
-                                  style: TextStyle(
-                                    fontFamily: 'Lexend',
-                                    color: Color(0xFF181818),
-                                    fontWeight: FontWeight.w500,
+                                child: const Align(
+                                  alignment: AlignmentDirectional(0, 0),
+                                  child: Text(
+                                    'RegTech',
+                                    style: TextStyle(
+                                      fontFamily: 'Lexend',
+                                      color: Color(0xFF181818),
+                                      fontWeight: FontWeight.w500,
+                                    ),
                                   ),
                                 ),
                               ),

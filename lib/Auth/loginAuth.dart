@@ -1,3 +1,4 @@
+import 'package:finance_app/screens/DefaultPage.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -7,6 +8,7 @@ import 'package:finance_app/login_page_model.dart' as model;
 import 'package:url_launcher/url_launcher.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:page_transition/page_transition.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
@@ -37,6 +39,11 @@ class _LoginScreenState extends State<LoginScreen> {
       // Authentication successful
       print('User logged in: ${userCredential.user!.email}');
       // Navigate to the next screen or perform any other action
+      Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const DefaultPage(),
+          ));
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
         print('No user found for that email.');
@@ -326,7 +333,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 ),
                 GestureDetector(
                   onTap: () async {
-                    Navigator.of(context).pushNamed('registerAccount');
+                    Navigator.of(context).pushNamed('./registerAuth');
                   },
                   child: Container(
                     width: MediaQuery.of(context).size.width * 0.8,
