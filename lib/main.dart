@@ -33,7 +33,7 @@ class MainApp extends StatelessWidget {
         './loginAuth': (context) => const LoginScreen(),
       },
       debugShowCheckedModeBanner: false,
-      home: const SplashScreen(),
+      home: const DefaultPage(),
     );
   }
 }

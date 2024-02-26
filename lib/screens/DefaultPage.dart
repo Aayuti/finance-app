@@ -34,10 +34,13 @@ class _DefaultPageState extends State<DefaultPage> {
         backgroundColor: Color.fromARGB(255, 9, 8, 8),
         body: _pageOptions[selectedPage],
         bottomNavigationBar: BottomNavigationBar(
-          backgroundColor: Colors.blue,
-          selectedItemColor: Color.fromARGB(255, 148, 26, 144),
+          backgroundColor: Color.fromARGB(255, 18, 18, 19),
+          selectedItemColor: Color(0XFFF1BCEF),
+          unselectedItemColor: Colors.white,
+          type: BottomNavigationBarType.fixed,
+          //selectedItemColor: Color.fromARGB(255, 148, 26, 144),
           elevation: 5.0,
-          unselectedItemColor: Color.fromARGB(255, 45, 10, 44),
+          //unselectedItemColor: Color.fromARGB(255, 45, 10, 44),
           currentIndex: selectedPage,
           onTap: (index) {
             setState(() {
