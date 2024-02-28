@@ -24,6 +24,7 @@ class _TransactionADDWidgetState extends State<TransactionADDWidget>
     with TickerProviderStateMixin {
   // late TransactionADDModel _model;
   String currentUserReference = 'user123';
+  String? selectedValue;
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
@@ -311,95 +312,139 @@ class _TransactionADDWidgetState extends State<TransactionADDWidget>
                               // ),
                               ),
                         ),
+                        //---------------------------------------------------------------------------------------------------------------------
 
-                        //-------------------------------------------------
                         Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
-                                0, 16, 0, 0),
+                            padding:
+                                EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
                             child: TextFormField(
-                              // controller: _model.spentAtController,
-                              // focusNode: _model.spentAtFocusNode,
+                              // controller: _model.reasonController,
+                              // focusNode: _model.reasonFocusNode,
                               obscureText: false,
-                              style: const TextStyle(
-                                color: Colors.white,
-                              ),
                               decoration: InputDecoration(
-                                labelText: 'Spent At',
-                                // labelStyle: FlutterFlowTheme.of(context).bodySmall,
+                                // labelStyle: FlutterFlowTheme.of(context).bodyMedium,
+                                hintText: 'Spent At?',
+                                hintStyle: const TextStyle(
+                                    fontWeight: FontWeight.normal,
+                                    color: Color.fromARGB(255, 118, 116, 116)),
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: const BorderSide(
-                                    color: Color.fromARGB(255, 118, 116, 116),
+                                    color: Color(0xFFF1BCEF),
                                     width: 2,
                                   ),
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 focusedBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0XFFF1BCEF),
                                     width: 2,
                                   ),
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 errorBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0XFFF1BCEF),
                                     width: 2,
                                   ),
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 focusedErrorBorder: OutlineInputBorder(
-                                  borderSide: const BorderSide(
+                                  borderSide: BorderSide(
                                     color: Color(0XFFF1BCEF),
                                     width: 2,
                                   ),
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                                 contentPadding: EdgeInsetsDirectional.fromSTEB(
-                                    20, 24, 24, 24),
+                                    20, 40, 24, 0),
                               ),
-                              // style: FlutterFlowTheme.of(context).bodySmall,
-                              // validator: _model.spentAtControllerValidator
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.normal,
+                                  color: Colors.white),
+                              textAlign: TextAlign.start,
+                              maxLines: 1,
+                              // validator: _model.reasonControllerValidator
                               //     .asValidator(context),
                             )
                             // .animateOnPageLoad(
-                            //     animationsMap['textFieldOnPageLoadAnimation2']!),
+                            //     animationsMap['textFieldOnPageLoadAnimation3']!),
                             ),
+
                         Padding(
-                          padding:
-                              const EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
-                          child: StreamBuilder<List<BudgetListRecord>>(
-                            stream: queryBudgetListRecord(
-                                budgetUser: currentUserReference),
-                            builder: (context, snapshot) {
-                              if (!snapshot.hasData) {
-                                return const Center(
-                                  child:
-                                      CircularProgressIndicator(), // Use any loading indicator here
-                                );
-                              }
-
-                              List<BudgetListRecord> budgetList =
-                                  snapshot.data!;
-
-                              return DropdownButtonFormField<String>(
-                                items: budgetList.map((record) {
-                                  return DropdownMenuItem(
-                                    value: record.itemName,
-                                    child: Text(record.itemName),
-                                  );
-                                }).toList(),
-                                onChanged: (String? value) {
-                                  // Handle onChanged event
+                            padding: const EdgeInsetsDirectional.fromSTEB(
+                                0, 16, 0, 0),
+                            child: Theme(
+                              data: ThemeData(
+                                canvasColor: Color.fromARGB(255, 44, 42,
+                                    43), // Set the dropdown background color
+                              ),
+                              child: DropdownButtonFormField<String>(
+                                value: selectedValue,
+                                decoration: const InputDecoration(
+                                  labelText: 'Category',
+                                  border: OutlineInputBorder(),
+                                ),
+                                style: const TextStyle(
+                                    color: Colors.white), // Set the text color
+                                onChanged: (String? newValue) {
+                                  setState(() {
+                                    selectedValue = newValue;
+                                  });
                                 },
-                              );
-                            },
-                          ),
-                        ),
-                        // .animateOnPageLoad(
-                        //                               animationsMap['dropDownOnPageLoadAnimation']!);
-                        // },
-                        // ),
-                        // ),
+                                items: const [
+                                  DropdownMenuItem(
+                                    value: "Option 1",
+                                    child: Text(
+                                      "Food and Beverages",
+                                      style: TextStyle(
+                                          color: Color.fromARGB(255, 253, 249,
+                                              252)), // Set the text color
+                                    ),
+                                  ),
+                                  DropdownMenuItem(
+                                    value: "Option 2",
+                                    child: Text(
+                                      "External Transfer",
+                                      style: TextStyle(
+                                          color: Color.fromARGB(255, 246, 243,
+                                              245)), // Set the text color
+                                    ),
+                                  ),
+                                  DropdownMenuItem(
+                                    value: "Option 3",
+                                    child: Text(
+                                      "Travel",
+                                      style: TextStyle(
+                                          color: Color.fromARGB(255, 246, 243,
+                                              245)), // Set the text color
+                                    ),
+                                  ),
+                                  DropdownMenuItem(
+                                    value: "Option 4",
+                                    child: Text(
+                                      "Recharge",
+                                      style: TextStyle(
+                                          color: Color.fromARGB(255, 246, 243,
+                                              245)), // Set the text color
+                                    ),
+                                  ),
+                                  DropdownMenuItem(
+                                    value: "Option 5",
+                                    child: Text(
+                                      "Subscription",
+                                      style: TextStyle(
+                                          color: Color.fromARGB(255, 246, 243,
+                                              245)), // Set the text color
+                                    ),
+                                  ),
+                                  // Add more DropdownMenuItem widgets as needed
+                                ],
+                              ),
+                            )),
+
+                        //CODE FROM HERE THIS IS THE ORIGINAL CODE
+                        //-------------------------------------------------
+
                         Padding(
                             padding:
                                 EdgeInsetsDirectional.fromSTEB(0, 16, 0, 0),
@@ -460,6 +505,15 @@ class _TransactionADDWidgetState extends State<TransactionADDWidget>
                           child: TextButton(
                             onPressed: () {
                               print('Button pressed ...');
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  backgroundColor: Color(0xFFF1BCEF),
+                                  content: Text(
+                                    'Amount has been added successfully!',
+                                    style: TextStyle(color: Colors.black),
+                                  ),
+                                ),
+                              );
                             },
                             style: TextButton.styleFrom(
                               backgroundColor: const Color(0XFFF1BCEF),

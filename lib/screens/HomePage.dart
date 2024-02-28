@@ -8,6 +8,7 @@
 // import 'package:flutter_spinkit/flutter_spinkit.dart';
 //-----------------------------------------------------------------------------
 
+import 'package:finance_app/screens/Graph.dart';
 import 'package:flutter/material.dart';
 
 class HomePageWidget extends StatefulWidget {
@@ -19,11 +20,6 @@ class HomePageWidget extends StatefulWidget {
 
 class _HomePageWidgetState extends State<HomePageWidget>
     with TickerProviderStateMixin {
-  // late AnimationController _rowAnimationController;
-  // late AnimationController _columnAnimationController;
-  // PageController _pageController = PageController();
-  // int _currentIndex = 0;
-
   @override
   void initState() {
     super.initState();
@@ -91,7 +87,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                       Padding(
                         padding: EdgeInsetsDirectional.fromSTEB(4, 0, 0, 0),
                         child: Text(
-                          'Andrew',
+                          'Aayuti',
                           style: TextStyle(
                             fontFamily: 'Lexend',
                             fontSize: 18,
@@ -190,7 +186,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Text(
-                                  '\$7,630',
+                                  'INR 200',
                                   style: TextStyle(
                                     fontFamily: 'Lexend',
                                     color: Colors
@@ -330,26 +326,33 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   0xFFF1CBEF), // Replace with your desired color
                               borderRadius: BorderRadius.circular(8),
                             ),
-                            child: const Column(
+                            child: Column(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Icon(
+                                const Icon(
                                   Icons.stacked_line_chart_rounded,
                                   color: Color(
                                       0xFF272525), // Replace with your desired color
                                   size: 40,
                                 ),
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0, 8, 0, 0),
-                                  child: Text(
-                                    'Activity', // Replace with your desired text
-                                    style: TextStyle(
-                                      fontFamily: 'Lexend',
-                                      color: Color.fromARGB(255, 41, 37,
-                                          37), // Replace with your desired color
-                                      fontSize: 14,
+                                  child: GestureDetector(
+                                    onTap: () => Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const ChartWidget())),
+                                    child: const Text(
+                                      'Activity', // Replace with your desired text
+                                      style: TextStyle(
+                                        fontFamily: 'Lexend',
+                                        color: Color.fromARGB(255, 41, 37,
+                                            37), // Replace with your desired color
+                                        fontSize: 14,
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -442,8 +445,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   padding: EdgeInsets.all(8),
                                   child: Icon(
                                     Icons.monetization_on_rounded,
-                                    color: Color(
-                                        0xFF272525), // Replace with your desired color
+                                    color: Color(0xFF272525),
                                     size: 24,
                                   ),
                                 ),
@@ -459,7 +461,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Go Far Rewards', // Replace with your desired text
+                                      'Netflix', // Replace with your desired text
                                       style: TextStyle(
                                         fontFamily: 'Lexend',
                                         color: Colors
@@ -470,7 +472,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0, 4, 0, 0),
                                       child: Text(
-                                        'Income', // Replace with your desired text
+                                        'Expense', // Replace with your desired text
                                         style: TextStyle(
                                           fontFamily: 'Lexend',
                                           color: Color.fromARGB(66, 27, 26,
@@ -492,7 +494,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
-                                    '50\$', // Replace with your text
+                                    'Rs. 200', // Replace with your text
                                     textAlign: TextAlign.end,
                                     style: TextStyle(
                                       fontFamily: 'Lexend',
@@ -501,20 +503,20 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ), // Text
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 4, 0, 0),
-                                    child: Text(
-                                      'Hello World', // Replace with your text
-                                      textAlign: TextAlign.end,
-                                      style: TextStyle(
-                                        fontFamily: 'Lexend',
-                                        color: Color.fromARGB(255, 17, 19,
-                                            20), // Replace with your desired color
-                                        fontSize: 12,
-                                      ), // Replace with your custom text style
-                                    ),
-                                  ), // padding
+                                  // Padding(
+                                  //   padding: EdgeInsetsDirectional.fromSTEB(
+                                  //       0, 4, 0, 0),
+                                  //   child: Text(
+                                  //     'Hello World', // Replace with your text
+                                  //     textAlign: TextAlign.end,
+                                  //     style: TextStyle(
+                                  //       fontFamily: 'Lexend',
+                                  //       color: Color.fromARGB(255, 17, 19,
+                                  //           20), // Replace with your desired color
+                                  //       fontSize: 12,
+                                  //     ), // Replace with your custom text style
+                                  //   ),
+                                  // ), // padding
                                 ], // children
                               ), // column
                             ), //padding
@@ -572,7 +574,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Go Far Rewards', // Replace with your desired text
+                                      'Shopping', // Replace with your desired text
                                       style: TextStyle(
                                         fontFamily: 'Lexend',
                                         color: Colors
@@ -583,7 +585,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0, 4, 0, 0),
                                       child: Text(
-                                        'Income', // Replace with your desired text
+                                        'Expense', // Replace with your desired text
                                         style: TextStyle(
                                           fontFamily: 'Lexend',
                                           color: Color.fromARGB(66, 27, 26,
@@ -605,7 +607,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
-                                    '50\$', // Replace with your text
+                                    'Rs. 1500', // Replace with your text
                                     textAlign: TextAlign.end,
                                     style: TextStyle(
                                       fontFamily: 'Lexend',
@@ -614,20 +616,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ), // Text
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 4, 0, 0),
-                                    child: Text(
-                                      'Hello World', // Replace with your text
-                                      textAlign: TextAlign.end,
-                                      style: TextStyle(
-                                        fontFamily: 'Lexend',
-                                        color: Color.fromARGB(255, 17, 19,
-                                            20), // Replace with your desired color
-                                        fontSize: 12,
-                                      ), // Replace with your custom text style
-                                    ),
-                                  ), // padding
+                                  // padding
                                 ], // children
                               ), // column
                             ), //padding
@@ -687,7 +676,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Go Far Rewards', // Replace with your desired text
+                                      'Disney Plus Hotstar', // Replace with your desired text
                                       style: TextStyle(
                                         fontFamily: 'Lexend',
                                         color: Colors
@@ -698,7 +687,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0, 4, 0, 0),
                                       child: Text(
-                                        'Income', // Replace with your desired text
+                                        'Expense', // Replace with your desired text
                                         style: TextStyle(
                                           fontFamily: 'Lexend',
                                           color: Color.fromARGB(66, 27, 26,
@@ -720,7 +709,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
-                                    '50\$', // Replace with your text
+                                    'Rs. 1000', // Replace with your text
                                     textAlign: TextAlign.end,
                                     style: TextStyle(
                                       fontFamily: 'Lexend',
@@ -729,20 +718,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ), // Text
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 4, 0, 0),
-                                    child: Text(
-                                      'Hello World', // Replace with your text
-                                      textAlign: TextAlign.end,
-                                      style: TextStyle(
-                                        fontFamily: 'Lexend',
-                                        color: Color.fromARGB(255, 17, 19,
-                                            20), // Replace with your desired color
-                                        fontSize: 12,
-                                      ), // Replace with your custom text style
-                                    ),
-                                  ), // padding
+                                  // padding
                                 ], // children
                               ), // column
                             ), //padding
@@ -800,7 +776,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      'Go Far Rewards', // Replace with your desired text
+                                      'Amazon Prime Membership', // Replace with your desired text
                                       style: TextStyle(
                                         fontFamily: 'Lexend',
                                         color: Colors
@@ -811,7 +787,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       padding: EdgeInsetsDirectional.fromSTEB(
                                           0, 4, 0, 0),
                                       child: Text(
-                                        'Income', // Replace with your desired text
+                                        'expense', // Replace with your desired text
                                         style: TextStyle(
                                           fontFamily: 'Lexend',
                                           color: Color.fromARGB(66, 27, 26,
@@ -833,7 +809,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
-                                    '50\$', // Replace with your text
+                                    'Rs. 699', // Replace with your text
                                     textAlign: TextAlign.end,
                                     style: TextStyle(
                                       fontFamily: 'Lexend',
@@ -842,20 +818,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ), // Text
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 4, 0, 0),
-                                    child: Text(
-                                      'Hello World', // Replace with your text
-                                      textAlign: TextAlign.end,
-                                      style: TextStyle(
-                                        fontFamily: 'Lexend',
-                                        color: Color.fromARGB(255, 17, 19,
-                                            20), // Replace with your desired color
-                                        fontSize: 12,
-                                      ), // Replace with your custom text style
-                                    ),
-                                  ), // padding
+                                  // padding
                                 ], // children
                               ), // column
                             ), //padding
@@ -943,7 +906,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
-                                    '50\$', // Replace with your text
+                                    'Rs. 20', // Replace with your text
                                     textAlign: TextAlign.end,
                                     style: TextStyle(
                                       fontFamily: 'Lexend',
@@ -952,20 +915,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ), // Text
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 4, 0, 0),
-                                    child: Text(
-                                      'Hello World', // Replace with your text
-                                      textAlign: TextAlign.end,
-                                      style: TextStyle(
-                                        fontFamily: 'Lexend',
-                                        color: Color.fromARGB(255, 17, 19,
-                                            20), // Replace with your desired color
-                                        fontSize: 12,
-                                      ), // Replace with your custom text style
-                                    ),
-                                  ), // padding
+                                  // padding
                                 ], // children
                               ), // column
                             ), //padding
@@ -1056,7 +1006,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                 crossAxisAlignment: CrossAxisAlignment.end,
                                 children: [
                                   Text(
-                                    '50\$', // Replace with your text
+                                    'Rs. 500', // Replace with your text
                                     textAlign: TextAlign.end,
                                     style: TextStyle(
                                       fontFamily: 'Lexend',
@@ -1065,20 +1015,7 @@ class _HomePageWidgetState extends State<HomePageWidget>
                                       fontWeight: FontWeight.bold,
                                     ),
                                   ), // Text
-                                  Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        0, 4, 0, 0),
-                                    child: Text(
-                                      'Hello World', // Replace with your text
-                                      textAlign: TextAlign.end,
-                                      style: TextStyle(
-                                        fontFamily: 'Lexend',
-                                        color: Color.fromARGB(255, 17, 19,
-                                            20), // Replace with your desired color
-                                        fontSize: 12,
-                                      ), // Replace with your custom text style
-                                    ),
-                                  ), // padding
+                                  // padding
                                 ], // children
                               ), // column
                             ), //padding

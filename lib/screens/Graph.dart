@@ -21,7 +21,7 @@ class _ChartWidgetState extends State<ChartWidget> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-          backgroundColor: Color(0xFFF1BCEF),
+          backgroundColor: const Color(0xFFF1BCEF),
           body: Padding(
             padding: const EdgeInsetsDirectional.fromSTEB(50, 60, 0, 0),
             child: SizedBox(
@@ -78,7 +78,8 @@ class _ChartWidgetState extends State<ChartWidget> {
                     BarChartGroupData(
                       x: 0,
                       barRods: [
-                        BarChartRodData(toY: 5, color: const Color(0xFF181818)),
+                        BarChartRodData(
+                            toY: 5, color: Color.fromARGB(255, 104, 4, 63)),
                       ],
                     ),
                     BarChartGroupData(
@@ -91,7 +92,9 @@ class _ChartWidgetState extends State<ChartWidget> {
                     BarChartGroupData(
                       x: 2,
                       barRods: [
-                        BarChartRodData(toY: 8, color: const Color(0xFF181818)),
+                        BarChartRodData(
+                            toY: 8,
+                            color: const Color.fromARGB(255, 104, 4, 63)),
                       ],
                     ),
                     BarChartGroupData(
@@ -103,7 +106,9 @@ class _ChartWidgetState extends State<ChartWidget> {
                     BarChartGroupData(
                       x: 4,
                       barRods: [
-                        BarChartRodData(toY: 3, color: const Color(0xFF181818)),
+                        BarChartRodData(
+                            toY: 3,
+                            color: const Color.fromARGB(255, 104, 4, 63)),
                       ],
                     ),
                   ],

@@ -154,7 +154,7 @@ class _SplashScreenState extends State<SplashScreen> {
                       ),
                     ),
                     child: const Text(
-                      'Get Started',
+                      'LOG IN',
                       style: TextStyle(
                         color: Colors.black,
                         fontFamily: 'Ubuntu',

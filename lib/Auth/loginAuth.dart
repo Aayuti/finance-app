@@ -39,6 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
       // Authentication successful
       print('User logged in: ${userCredential.user!.email}');
       // Navigate to the next screen or perform any other action
+      // ignore: use_build_context_synchronously
       Navigator.push(
           context,
           MaterialPageRoute(

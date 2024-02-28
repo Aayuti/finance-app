@@ -414,31 +414,34 @@ class _LearnMoreWidgetState extends State<LearnMoreWidget>
                           Padding(
                             padding: const EdgeInsetsDirectional.fromSTEB(
                                 0, 16, 10, 0),
-                            child: GestureDetector(
-                              onTap: () =>
-                                  _launchUrl(Uri.parse(cards[0]['url']!)),
-                              child: Container(
-                                width: 120,
-                                height: 110,
-                                constraints: const BoxConstraints(
-                                  maxWidth: 500,
-                                ),
-                                decoration: BoxDecoration(
-                                  color: Color(0xFFF1CBEF),
-                                  borderRadius: BorderRadius.circular(12),
-                                  border: Border.all(
-                                    color: Color(0xFFF1CBEF),
-                                    width: 2,
+                            child: MouseRegion(
+                              cursor: SystemMouseCursors.click,
+                              child: GestureDetector(
+                                onTap: () =>
+                                    _launchUrl(Uri.parse(cards[0]['url']!)),
+                                child: Container(
+                                  width: 120,
+                                  height: 110,
+                                  constraints: const BoxConstraints(
+                                    maxWidth: 500,
                                   ),
-                                ),
-                                child: const Align(
-                                  alignment: AlignmentDirectional(0, 0),
-                                  child: Text(
-                                    'Mutual Funds',
-                                    style: TextStyle(
-                                      fontFamily: 'Lexend',
-                                      color: Color(0xFF181818),
-                                      fontWeight: FontWeight.w500,
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFFF1CBEF),
+                                    borderRadius: BorderRadius.circular(12),
+                                    border: Border.all(
+                                      color: Color(0xFFF1CBEF),
+                                      width: 2,
+                                    ),
+                                  ),
+                                  child: const Align(
+                                    alignment: AlignmentDirectional(0, 0),
+                                    child: Text(
+                                      'Mutual Funds',
+                                      style: TextStyle(
+                                        fontFamily: 'Lexend',
+                                        color: Color(0xFF181818),
+                                        fontWeight: FontWeight.w500,
+                                      ),
                                     ),
                                   ),
                                 ),
