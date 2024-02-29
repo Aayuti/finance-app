@@ -14,8 +14,7 @@ Link for User Manual
 https://drive.google.com/file/d/1xcW3MSVJCRFwlepXs_WcyUdpcStE5DDX/view?usp=sharing
 
 Following are the Screenshots of our Mobile App:
-
-
+![WhatsApp Image 2024-02-29 at 14 16 17_4b20b9c3](https://github.com/Aayuti/finance-app/assets/130854430/7c523461-17b8-4537-9aa1-088610b1aa82)
 
 A few resources to get you started if this is your first Flutter project:
 
