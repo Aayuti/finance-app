@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 // import '/Auth/LoginScreen.dart' show LoginScreen;
 import 'Auth/loginAuth.dart';
 
+
+//Auth
 class login_page_model extends State<LoginScreen> {
   //  State fields for stateful widgets in this page.
   // State field(s) for emailAddress-login widget.
